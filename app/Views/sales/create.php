@@ -1,22 +1,19 @@
-<?php  ?>
+<?php // app/Views/sales/create.php ?>
 <?= view('layout/header') ?>
 <?= view('layout/sidebar') ?>
 
 <style>
-/* POS Specific */
 .pos-wrap {
     display: flex;
     height: calc(100vh - 64px);
     overflow: hidden;
 }
-
 .pos-left {
     flex: 1;
     overflow-y: auto;
-    padding: 18px;
+    padding: 16px;
     background: #f1f5f9;
 }
-
 .pos-right {
     width: 360px;
     flex-shrink: 0;
@@ -25,546 +22,735 @@
     flex-direction: column;
     border-left: 1px solid #e2e8f0;
 }
-
-/* Product Grid */
 .prod-card {
     background: #fff;
     border-radius: 12px;
-    padding: 12px;
+    padding: 10px;
     cursor: pointer;
     border: 2px solid transparent;
     transition: all .2s;
     height: 100%;
-    box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    box-shadow: 0 1px 4px rgba(0,0,0,.07);
+    position: relative;
+    user-select: none;
 }
-
 .prod-card:hover {
     border-color: #2563eb;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(37,99,235,.15);
+    box-shadow: 0 4px 16px rgba(37,99,235,.15);
 }
-
-.prod-card.disabled {
-    opacity: .5;
-    cursor: not-allowed;
-    pointer-events: none;
+.prod-card.out { opacity:.45; cursor:not-allowed; pointer-events:none; }
+.prod-thumb-box {
+    width:100%; height:75px;
+    background:#f1f5f9;
+    border-radius:8px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.6rem; margin-bottom:7px; overflow:hidden;
 }
-
-.prod-thumb {
-    width: 100%;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 8px;
-    background: #f8fafc;
+.prod-thumb-box img { width:100%; height:100%; object-fit:cover; }
+.cart-badge {
+    position:absolute; top:7px; right:7px;
+    background:#2563eb; color:#fff;
+    border-radius:50%; width:20px; height:20px;
+    font-size:.6rem; font-weight:800;
+    display:none; align-items:center; justify-content:center;
 }
-
-.prod-thumb-placeholder {
-    width: 100%;
-    height: 80px;
-    background: #f1f5f9;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.8rem;
-    margin-bottom: 8px;
-}
-
-/* Cart */
 .cart-head {
-    padding: 18px;
-    background: linear-gradient(135deg, #0f172a, #1e3a5f);
-    color: #fff;
+    padding:14px 16px;
+    background:linear-gradient(135deg,#0f172a,#1e3a5f);
+    color:#fff; flex-shrink:0;
 }
-
-.cart-body {
-    flex: 1;
-    overflow-y: auto;
-    padding: 12px;
-}
-
-.cart-foot { padding: 14px; border-top: 1px solid #e2e8f0; }
-
+.cart-body { flex:1; overflow-y:auto; padding:10px; }
+.cart-foot { padding:12px 14px; border-top:1px solid #e2e8f0; flex-shrink:0; }
 .cart-item {
-    background: #f8fafc;
-    border-radius: 10px;
-    padding: 10px 12px;
-    margin-bottom: 8px;
-    border: 1px solid #e2e8f0;
+    background:#f8fafc; border-radius:10px;
+    padding:9px 11px; margin-bottom:7px;
+    border:1px solid #e2e8f0;
 }
-
-.qty-btn {
-    width: 28px; height: 28px;
-    border: 1.5px solid #e2e8f0;
-    background: #fff;
-    border-radius: 7px;
-    cursor: pointer;
-    font-size: .9rem;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all .15s;
-    color: #475569;
+.qty-wrap {
+    display:flex; align-items:center; gap:3px;
+    background:#fff; border:1.5px solid #e2e8f0;
+    border-radius:9px; padding:2px 4px;
 }
-
-.qty-btn:hover { background: #2563eb; color: #fff; border-color: #2563eb; }
-
-.pay-btn {
-    border: 1.5px solid #e2e8f0;
-    background: #f8fafc;
-    border-radius: 9px;
-    padding: 8px 5px;
-    text-align: center;
-    cursor: pointer;
-    transition: all .2s;
-    font-size: .78rem;
-    font-weight: 700;
-    color: #475569;
-    flex: 1;
+.qbtn {
+    width:26px; height:26px; border:none;
+    border-radius:6px; background:#f1f5f9;
+    font-size:.9rem; font-weight:800;
+    cursor:pointer; display:flex;
+    align-items:center; justify-content:center;
+    color:#475569; transition:all .15s; flex-shrink:0;
 }
-
-.pay-btn.selected {
-    border-color: #2563eb;
-    background: #eff6ff;
-    color: #2563eb;
+.qbtn:hover { background:#2563eb; color:#fff; }
+.qbtn.m:hover { background:#dc2626; color:#fff; }
+.qty-num {
+    width:36px; text-align:center; border:none;
+    background:transparent; font-size:.88rem;
+    font-weight:800; color:#1e293b; outline:none;
+    font-family:'Nunito',sans-serif;
 }
-
+.qty-num::-webkit-outer-spin-button,
+.qty-num::-webkit-inner-spin-button { -webkit-appearance:none; }
+.qty-num[type=number] { -moz-appearance:textfield; }
 .cat-pill {
-    border: 1.5px solid #e2e8f0;
-    background: #fff;
-    border-radius: 20px;
-    padding: 5px 14px;
-    font-size: .78rem;
-    font-weight: 700;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: all .2s;
-    color: #475569;
+    border:1.5px solid #e2e8f0; background:#fff;
+    border-radius:20px; padding:4px 14px;
+    font-size:.77rem; font-weight:700; cursor:pointer;
+    white-space:nowrap; color:#475569; transition:all .2s;
 }
-
-.cat-pill.active {
-    background: #2563eb;
-    border-color: #2563eb;
-    color: #fff;
+.cat-pill.on { background:#2563eb; border-color:#2563eb; color:#fff; }
+.pay-opt {
+    flex:1; border:1.5px solid #e2e8f0; background:#f8fafc;
+    border-radius:9px; padding:7px 4px; text-align:center;
+    cursor:pointer; font-size:.77rem; font-weight:700;
+    color:#475569; transition:all .2s;
 }
+.pay-opt.on { border-color:#2563eb; background:#eff6ff; color:#1d4ed8; }
 </style>
 
-<div class="ws-main" style="margin-left: var(--sidebar-w);">
+<div class="ws-main" style="margin-left:var(--sidebar-w)">
 
-    <!-- Topbar -->
     <header class="ws-topbar">
         <div class="page-title">
             🛒 Point of Sale
-            <small>WebSari Sari-Sari Store</small>
+            <small>WebSari</small>
         </div>
-        <div class="d-flex align-items-center gap-2">
-            <input type="text" id="searchProd" class="form-control form-control-sm"
-                   style="width:200px;" placeholder="🔍 Search or scan barcode...">
-            <a href="<?= base_url('sales') ?>" class="btn btn-light btn-sm">
-                <i class="bi bi-arrow-left me-1"></i>Back
+        <div class="d-flex gap-2 align-items-center">
+            <input type="text" id="srch"
+                   class="form-control form-control-sm"
+                   style="width:200px"
+                   placeholder="Search product...">
+            <a href="<?= base_url('sales') ?>"
+               class="btn btn-light btn-sm">
+                ← Back
             </a>
         </div>
     </header>
 
-    <!-- Flash -->
     <?php if (session()->getFlashdata('error')): ?>
-        <div class="alert alert-danger m-3 mb-0">
-            <i class="bi bi-exclamation-circle-fill me-2"></i>
-            <?= session()->getFlashdata('error') ?>
+        <div class="alert alert-danger m-3 py-2 mb-0">
+            <?= esc(session()->getFlashdata('error')) ?>
         </div>
     <?php endif; ?>
 
-    <!-- POS Layout -->
     <div class="pos-wrap">
 
-        <!-- LEFT: Products -->
+        <!-- Products -->
         <div class="pos-left">
-            <!-- Category Pills -->
-            <div class="d-flex gap-2 flex-wrap mb-3">
-                <div class="cat-pill active" data-cat="all"
-                     onclick="filterCat('all', this)">All</div>
+            <!-- Category pills -->
+            <div class="d-flex gap-2 flex-wrap mb-3" id="cats">
+                <div class="cat-pill on" onclick="catFilter('all',this)">All</div>
                 <?php
-                    $cats = array_unique(array_column($products, 'category_name'));
-                    foreach ($cats as $cat):
-                        if (!$cat) continue;
+                $seen = [];
+                foreach ($products as $pr) {
+                    $c = $pr['category_name'] ?? '';
+                    if ($c && !in_array($c, $seen)) {
+                        $seen[] = $c;
+                        echo '<div class="cat-pill" onclick="catFilter(\''
+                             . esc($c) . '\',this)">' . esc($c) . '</div>';
+                    }
+                }
                 ?>
-                    <div class="cat-pill" data-cat="<?= esc($cat) ?>"
-                         onclick="filterCat('<?= esc($cat) ?>', this)">
-                        <?= esc($cat) ?>
-                    </div>
-                <?php endforeach; ?>
             </div>
 
-            <!-- Product Grid -->
-            <div class="row g-2" id="prodGrid">
-                <?php foreach ($products as $p): ?>
-                    <div class="col-6 col-sm-4 col-md-3 prod-item"
-                         data-cat="<?= esc($p['category_name'] ?? '') ?>"
-                         data-name="<?= strtolower(esc($p['name'])) ?>"
-                         data-barcode="<?= strtolower(esc($p['barcode'] ?? '')) ?>">
-                        <div class="prod-card <?= $p['stock'] <= 0 ? 'disabled' : '' ?>"
-                             onclick="addToCart(<?= htmlspecialchars(json_encode($p)) ?>)">
-                            <?php if ($p['image']): ?>
-                                <img src="<?= base_url('uploads/products/'.$p['image']) ?>"
-                                     class="prod-thumb" alt="">
+            <!-- Grid -->
+            <div class="row g-2" id="grid">
+                <?php foreach ($products as $pr): ?>
+                <div class="col-6 col-md-4 col-lg-3 pi"
+                     data-cat="<?= esc($pr['category_name'] ?? '') ?>"
+                     data-name="<?= strtolower(esc($pr['name'])) ?>"
+                     data-bc="<?= strtolower(esc($pr['barcode'] ?? '')) ?>">
+                    <div class="prod-card <?= $pr['stock'] <= 0 ? 'out' : '' ?>"
+                         onclick="tapProduct(<?= (int)$pr['id'] ?>,
+                                  <?= htmlspecialchars(json_encode($pr['name'])) ?>,
+                                  <?= (float)$pr['price'] ?>,
+                                  <?= (int)$pr['stock'] ?>,
+                                  <?= htmlspecialchars(json_encode($pr['unit'] ?? 'pcs')) ?>)">
+                        <div class="cart-badge" id="cb-<?= $pr['id'] ?>"></div>
+                        <div class="prod-thumb-box">
+                            <?php if ($pr['image']): ?>
+                                <img src="<?= base_url('uploads/products/'.$pr['image']) ?>"
+                                     alt="">
                             <?php else: ?>
-                                <div class="prod-thumb-placeholder">🛒</div>
+                                🛒
                             <?php endif; ?>
-                            <div class="fw-bold" style="font-size:.78rem;line-height:1.3;">
-                                <?= esc($p['name']) ?>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center mt-1">
-                                <span class="fw-bold text-primary" style="font-size:.82rem;">
-                                    ₱<?= number_format($p['price'], 2) ?>
-                                </span>
-                                <?php if ($p['stock'] <= 0): ?>
-                                    <span class="badge bg-danger" style="font-size:.6rem;">
-                                        Out
-                                    </span>
-                                <?php elseif ($p['stock'] <= $p['low_stock_alert']): ?>
-                                    <span class="badge bg-warning text-dark"
-                                          style="font-size:.6rem;">
-                                        <?= $p['stock'] ?>
-                                    </span>
-                                <?php else: ?>
-                                    <span class="badge bg-success" style="font-size:.6rem;">
-                                        <?= $p['stock'] ?>
-                                    </span>
-                                <?php endif; ?>
-                            </div>
+                        </div>
+                        <div class="fw-bold text-truncate"
+                             style="font-size:.77rem">
+                            <?= esc($pr['name']) ?>
+                        </div>
+                        <div class="d-flex justify-content-between
+                                    align-items-center mt-1">
+                            <span class="fw-bold text-primary"
+                                  style="font-size:.8rem">
+                                ₱<?= number_format($pr['price'],2) ?>
+                            </span>
+                            <span class="badge <?= $pr['stock'] <= 0
+                                ? 'bg-danger'
+                                : ($pr['stock'] <= $pr['low_stock_alert']
+                                    ? 'bg-warning text-dark'
+                                    : 'bg-success') ?>"
+                                  style="font-size:.6rem">
+                                <?= $pr['stock'] ?>
+                            </span>
                         </div>
                     </div>
+                </div>
                 <?php endforeach; ?>
             </div>
         </div>
 
-        <!-- RIGHT: Cart -->
+        <!-- Cart -->
         <div class="pos-right">
-
-            <!-- Cart Header -->
             <div class="cart-head">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
-                        <h6 class="fw-bold mb-0">
-                            <i class="bi bi-cart3 me-1"></i>Order Cart
-                        </h6>
-                        <small style="opacity:.5;font-size:.7rem;">
-                            Customer:
-                            <input type="text" id="custName"
-                                   placeholder="Walk-in Customer"
-                                   style="background:transparent;border:none;
-                                          color:rgba(255,255,255,.8);font-size:.7rem;
-                                          outline:none;width:130px;font-family:'Nunito',sans-serif;">
-                        </small>
+                        <span class="fw-bold" style="font-size:.95rem">
+                            🛒 Order Cart
+                        </span>
+                        <span id="cnt"
+                              class="badge ms-1"
+                              style="background:rgba(255,255,255,.18);
+                                     font-size:.65rem">
+                            0
+                        </span>
                     </div>
-                    <button class="btn btn-sm"
-                            style="background:rgba(255,255,255,.15);color:#fff;
-                                   border-radius:8px;padding:4px 10px;"
-                            onclick="clearCart()">
-                        <i class="bi bi-trash"></i>
+                    <button onclick="clearCart()"
+                            style="background:rgba(220,38,38,.3);border:none;
+                                   color:#fff;border-radius:7px;
+                                   padding:3px 9px;cursor:pointer;
+                                   font-size:.8rem">
+                        🗑
                     </button>
                 </div>
+                <div style="margin-top:6px;font-size:.72rem;
+                            color:rgba(255,255,255,.45)">
+                    Customer:
+                    <input id="cust" type="text"
+                           placeholder="Walk-in Customer"
+                           style="background:transparent;border:none;
+                                  border-bottom:1px solid rgba(255,255,255,.2);
+                                  color:rgba(255,255,255,.8);
+                                  font-size:.72rem;outline:none;
+                                  width:150px;padding:1px 3px;
+                                  font-family:Nunito,sans-serif">
+                </div>
             </div>
 
-            <!-- Cart Items -->
             <div class="cart-body" id="cartBody">
-                <div id="emptyMsg" class="text-center py-5 text-muted">
-                    <div style="font-size:3rem;opacity:.3;">🛒</div>
-                    <p style="font-size:.82rem;margin-top:8px;">Cart is empty</p>
-                    <p style="font-size:.72rem;">Tap a product to add it</p>
+                <div id="empty" class="text-center py-5 text-muted">
+                    <div style="font-size:2.8rem;opacity:.2">🛒</div>
+                    <p style="font-size:.8rem;margin-top:8px">
+                        Cart is empty<br>
+                        <small>Tap a product to add</small>
+                    </p>
                 </div>
             </div>
 
-            <!-- Cart Footer -->
             <div class="cart-foot">
-                <!-- Totals -->
-                <div class="mb-2">
-                    <div class="d-flex justify-content-between mb-1"
-                         style="font-size:.8rem;">
-                        <span class="text-muted">Subtotal:</span>
-                        <span id="subtotalLbl">₱0.00</span>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center mb-1"
-                         style="font-size:.8rem;">
-                        <span class="text-muted">Discount (₱):</span>
-                        <input type="number" id="discountIn"
-                               class="form-control form-control-sm text-end"
-                               style="width:90px;" min="0" step="1"
-                               placeholder="0" oninput="updateTotals()">
-                    </div>
+                <!-- Total -->
+                <div style="background:#f8fafc;border-radius:10px;
+                            padding:10px 12px;border:1px solid #e2e8f0;
+                            margin-bottom:10px">
                     <div class="d-flex justify-content-between"
-                         style="font-size:.95rem;border-top:1.5px dashed #e2e8f0;
-                                padding-top:8px;margin-top:4px;">
-                        <span class="fw-bold">TOTAL:</span>
-                        <span id="totalLbl" class="fw-bold text-primary"
-                              style="font-size:1.15rem;">₱0.00</span>
+                         style="font-size:.8rem">
+                        <span class="text-muted">Subtotal:</span>
+                        <span id="sub" class="fw-bold">₱0.00</span>
                     </div>
-                </div>
-
-                <!-- Payment Method -->
-                <div class="mb-2">
-                    <div style="font-size:.72rem;font-weight:700;color:#64748b;
-                                margin-bottom:5px;">Payment Method:</div>
-                    <div class="d-flex gap-1">
-                        <div class="pay-btn selected" data-pay="cash"
-                             onclick="selectPay('cash')">
-                            💵 Cash
-                        </div>
-                        <div class="pay-btn" data-pay="gcash"
-                             onclick="selectPay('gcash')">
-                            📱 GCash
-                        </div>
-                        <div class="pay-btn" data-pay="utang"
-                             onclick="selectPay('utang')">
-                            📝 Utang
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Amount Paid (Cash only) -->
-                <div id="cashSection" class="mb-2">
-                    <label style="font-size:.72rem;font-weight:700;color:#64748b;">
-                        Amount Paid (₱):
-                    </label>
-                    <input type="number" id="amtPaid"
-                           class="form-control form-control-sm" min="0" step="1"
-                           placeholder="Enter amount" oninput="calcChange()">
                     <div class="d-flex justify-content-between mt-1"
-                         style="font-size:.82rem;">
-                        <span class="text-muted">Change:</span>
-                        <span id="changeLbl" class="fw-bold text-success">₱0.00</span>
+                         style="font-size:1rem;border-top:1px dashed #e2e8f0;
+                                padding-top:7px;margin-top:6px">
+                        <span class="fw-bold">TOTAL:</span>
+                        <span id="tot" class="fw-bold text-primary"
+                              style="font-size:1.15rem">
+                            ₱0.00
+                        </span>
                     </div>
                 </div>
 
-                <!-- Notes -->
-                <div class="mb-2">
-                    <input type="text" id="notesIn" class="form-control form-control-sm"
-                           placeholder="Notes (optional)...">
+                <!-- Payment -->
+                <div style="font-size:.7rem;font-weight:700;color:#64748b;
+                            margin-bottom:5px;text-transform:uppercase">
+                    Payment:
+                </div>
+                <div class="d-flex gap-1 mb-2" id="payBtns">
+                    <div class="pay-opt on" data-p="cash"
+                         onclick="setPay('cash')">💵 Cash</div>
+                    <div class="pay-opt" data-p="gcash"
+                         onclick="setPay('gcash')">📱 GCash</div>
+                    <div class="pay-opt" data-p="utang"
+                         onclick="setPay('utang')">📝 Utang</div>
                 </div>
 
-                <!-- Checkout Button -->
-                <button id="checkoutBtn" class="btn btn-primary w-100 fw-bold"
-                        onclick="processCheckout()" disabled>
-                    <i class="bi bi-check2-circle me-2"></i>Complete Sale
+                <!-- Amount paid -->
+                <div id="cashDiv">
+                    <div style="font-size:.7rem;font-weight:700;
+                                color:#64748b;margin-bottom:3px;
+                                text-transform:uppercase">
+                        Amount Paid (₱):
+                    </div>
+                    <input type="number" id="paid"
+                           class="form-control mb-1"
+                           style="border-radius:9px"
+                           placeholder="0"
+                           min="0" step="1"
+                           oninput="calcChange()">
+                    <div class="d-flex justify-content-between"
+                         style="font-size:.85rem;background:#f0fdf4;
+                                border-radius:8px;padding:6px 10px">
+                        <span class="fw-bold text-muted">Change:</span>
+                        <span id="chng" class="fw-bold text-success">
+                            ₱0.00
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Complete Sale Button -->
+                <button id="sellBtn"
+                        class="btn btn-primary w-100 fw-bold mt-2"
+                        style="border-radius:10px;padding:12px;font-size:.95rem"
+                        onclick="doSale()"
+                        disabled>
+                    ✅ Complete Sale
                 </button>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Hidden Form -->
-<form id="saleForm" action="<?= base_url('sales/store') ?>"
-      method="POST" style="display:none;">
+<!-- THE FORM -->
+<form id="saleForm"
+      action="<?= base_url('sales/store') ?>"
+      method="POST"
+      style="display:none">
     <?= csrf_field() ?>
-    <input type="hidden" name="items"          id="fItems">
-    <input type="hidden" name="customer_name"  id="fCust">
-    <input type="hidden" name="discount"       id="fDiscount">
-    <input type="hidden" name="amount_paid"    id="fPaid">
-    <input type="hidden" name="payment_method" id="fPay" value="cash">
-    <input type="hidden" name="notes"          id="fNotes">
+    <input type="hidden" id="f_items"  name="items">
+    <input type="hidden" id="f_cust"   name="customer_name"  value="Walk-in Customer">
+    <input type="hidden" id="f_disc"   name="discount"       value="0">
+    <input type="hidden" id="f_paid"   name="amount_paid"    value="0">
+    <input type="hidden" id="f_pay"    name="payment_method" value="cash">
+    <input type="hidden" id="f_notes"  name="notes"          value="">
 </form>
+
+<!-- Qty Modal -->
+<div class="modal fade" id="qm" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content"
+             style="border-radius:16px;border:none;
+                    box-shadow:0 20px 50px rgba(0,0,0,.2)">
+            <div class="modal-body p-4 text-center">
+                <h6 class="fw-bold mb-0" id="qmTitle"></h6>
+                <p class="text-muted mb-3" id="qmStock"
+                   style="font-size:.75rem"></p>
+
+                <div class="d-flex align-items-center
+                            justify-content-center gap-3 mb-3">
+                    <button class="btn btn-danger"
+                            style="width:44px;height:44px;
+                                   border-radius:11px;font-size:1.4rem;
+                                   font-weight:800;padding:0"
+                            onclick="mAdj(-1)">−</button>
+
+                    <input type="number" id="qmNum"
+                           class="form-control text-center fw-bold"
+                           style="width:80px;font-size:1.4rem;
+                                  border-radius:10px;border:2px solid #2563eb"
+                           min="1" value="1"
+                           oninput="mSync()">
+
+                    <button class="btn btn-success"
+                            style="width:44px;height:44px;
+                                   border-radius:11px;font-size:1.4rem;
+                                   font-weight:800;padding:0"
+                            onclick="mAdj(1)">+</button>
+                </div>
+
+                <div style="background:#eff6ff;border-radius:10px;
+                            padding:10px;margin-bottom:14px">
+                    <div style="font-size:.7rem;color:#64748b;font-weight:700">
+                        SUBTOTAL
+                    </div>
+                    <div id="qmSub" class="fw-bold text-primary"
+                         style="font-size:1.4rem">
+                        ₱0.00
+                    </div>
+                </div>
+
+                <div class="d-flex gap-2">
+                    <button class="btn btn-light flex-fill"
+                            data-bs-dismiss="modal">Cancel</button>
+                    <button class="btn btn-primary flex-fill fw-bold"
+                            onclick="mConfirm()">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    let cart       = [];
-    let payMethod  = 'cash';
+'use strict';
 
-    // ── Add to Cart ───────────────────────────
-    function addToCart(p) {
-        const existing = cart.find(i => i.product_id === p.id);
+// ── State ─────────────────────────────────────────────
+var CART    = [];
+var PAY     = 'cash';
+var MP      = null;   // modal product
+var modal   = null;
 
-        if (existing) {
-            if (existing.qty >= p.stock) {
-                alert('⚠️ Max stock reached for ' + p.name); return;
-            }
-            existing.qty++;
-            existing.subtotal = existing.qty * existing.price;
-        } else {
-            cart.push({
-                product_id : p.id,
-                name       : p.name,
-                price      : parseFloat(p.price),
-                qty        : 1,
-                subtotal   : parseFloat(p.price),
-                max        : p.stock,
-            });
-        }
-        renderCart();
+window.addEventListener('load', function() {
+    modal = new bootstrap.Modal(document.getElementById('qm'));
+});
+
+// ── Tap product → open qty modal ──────────────────────
+function tapProduct(id, name, price, stock, unit) {
+    if (stock <= 0) return;
+
+    var inCart = 0;
+    for (var i = 0; i < CART.length; i++) {
+        if (CART[i].pid === id) { inCart = CART[i].qty; break; }
     }
 
-    // ── Render Cart ───────────────────────────
-    function renderCart() {
-        const body   = document.getElementById('cartBody');
-        const empty  = document.getElementById('emptyMsg');
+    var maxAdd = stock - inCart;
+    if (maxAdd <= 0) {
+        alert('Max stock reached for ' + name);
+        return;
+    }
 
-        if (cart.length === 0) {
-            body.innerHTML = '';
-            body.appendChild(empty);
-            empty.style.display = 'block';
-            document.getElementById('checkoutBtn').disabled = true;
-            updateTotals();
-            return;
+    MP = { id:id, name:name, price:price, stock:stock, unit:unit, maxAdd:maxAdd };
+
+    document.getElementById('qmTitle').textContent  = name;
+    document.getElementById('qmStock').textContent  =
+        'Stock: ' + stock + ' ' + unit +
+        (inCart > 0 ? ' (' + inCart + ' in cart)' : '');
+    document.getElementById('qmNum').value = '1';
+    document.getElementById('qmNum').max   = String(maxAdd);
+
+    mSync();
+    modal.show();
+    setTimeout(function() {
+        document.getElementById('qmNum').select();
+    }, 350);
+}
+
+// ── Modal helpers ─────────────────────────────────────
+function mAdj(d) {
+    var el  = document.getElementById('qmNum');
+    var val = (parseInt(el.value) || 1) + d;
+    if (val < 1)       val = 1;
+    if (val > MP.maxAdd) val = MP.maxAdd;
+    el.value = String(val);
+    mSync();
+}
+
+function mSync() {
+    var qty = parseInt(document.getElementById('qmNum').value) || 1;
+    if (qty < 1)        qty = 1;
+    if (qty > MP.maxAdd) qty = MP.maxAdd;
+    document.getElementById('qmNum').value = String(qty);
+    document.getElementById('qmSub').textContent =
+        '₱' + (qty * MP.price).toFixed(2);
+}
+
+function mConfirm() {
+    var qty = parseInt(document.getElementById('qmNum').value) || 1;
+    if (qty < 1 || qty > MP.maxAdd) return;
+
+    // Check existing in cart
+    var found = false;
+    for (var i = 0; i < CART.length; i++) {
+        if (CART[i].pid === MP.id) {
+            CART[i].qty     += qty;
+            CART[i].subtotal = CART[i].qty * CART[i].price;
+            found = true;
+            break;
         }
-
-        empty.style.display = 'none';
-        let html = '';
-
-        cart.forEach((item, idx) => {
-            html += `
-            <div class="cart-item">
-                <div class="d-flex justify-content-between align-items-start mb-1">
-                    <span class="fw-bold"
-                          style="font-size:.8rem;flex:1;line-height:1.3;">
-                        ${esc(item.name)}
-                    </span>
-                    <button onclick="removeItem(${idx})"
-                            style="background:none;border:none;color:#ef4444;
-                                   font-size:.9rem;padding:0;cursor:pointer;
-                                   margin-left:6px;">
-                        <i class="bi bi-x-circle-fill"></i>
-                    </button>
-                </div>
-                <div class="d-flex justify-content-between align-items-center">
-                    <span style="color:#2563eb;font-size:.8rem;font-weight:700;">
-                        ₱${item.price.toFixed(2)}
-                    </span>
-                    <div class="d-flex align-items-center gap-1">
-                        <div class="qty-btn" onclick="changeQty(${idx},-1)">−</div>
-                        <span style="font-size:.875rem;font-weight:700;
-                                     min-width:26px;text-align:center;">
-                            ${item.qty}
-                        </span>
-                        <div class="qty-btn" onclick="changeQty(${idx},1)">+</div>
-                    </div>
-                    <span style="font-size:.82rem;font-weight:700;">
-                        ₱${item.subtotal.toFixed(2)}
-                    </span>
-                </div>
-            </div>`;
+    }
+    if (!found) {
+        CART.push({
+            pid      : MP.id,
+            name     : MP.name,
+            price    : MP.price,
+            qty      : qty,
+            subtotal : qty * MP.price,
+            maxQty   : MP.stock,
+            unit     : MP.unit
         });
-
-        body.innerHTML = html;
-        document.getElementById('checkoutBtn').disabled = false;
-        updateTotals();
     }
 
-    function changeQty(idx, delta) {
-        cart[idx].qty += delta;
-        if (cart[idx].qty <= 0) {
-            cart.splice(idx, 1);
-        } else if (cart[idx].qty > cart[idx].max) {
-            cart[idx].qty = cart[idx].max;
-        } else {
-            cart[idx].subtotal = cart[idx].qty * cart[idx].price;
-        }
-        renderCart();
-    }
+    modal.hide();
+    renderCart();
+    setBadge(MP.id);
+}
 
-    function removeItem(idx) {
-        cart.splice(idx, 1);
-        renderCart();
-    }
+// ── Cart +/- ──────────────────────────────────────────
+function qChange(idx, d) {
+    var item   = CART[idx];
+    var newQty = item.qty + d;
 
-    function clearCart() {
-        if (cart.length > 0 && confirm('Clear all items?')) {
-            cart = [];
+    if (newQty <= 0) {
+        if (confirm('Remove ' + item.name + '?')) {
+            var pid = item.pid;
+            CART.splice(idx, 1);
+            setBadge(pid, true);
             renderCart();
         }
+        return;
+    }
+    if (newQty > item.maxQty) {
+        alert('Only ' + item.maxQty + ' ' + item.unit + ' available!');
+        return;
+    }
+    item.qty      = newQty;
+    item.subtotal = newQty * item.price;
+    setBadge(item.pid);
+    renderCart();
+}
+
+function qSet(idx, val) {
+    var item   = CART[idx];
+    var newQty = parseInt(val) || 1;
+    if (newQty < 1)          newQty = 1;
+    if (newQty > item.maxQty) newQty = item.maxQty;
+    item.qty      = newQty;
+    item.subtotal = newQty * item.price;
+    setBadge(item.pid);
+    renderCart();
+}
+
+function removeItem(idx) {
+    var pid = CART[idx].pid;
+    CART.splice(idx, 1);
+    setBadge(pid, true);
+    renderCart();
+}
+
+function clearCart() {
+    if (!CART.length) return;
+    if (!confirm('Clear cart?')) return;
+    var pids = CART.map(function(i) { return i.pid; });
+    CART = [];
+    pids.forEach(function(p) { setBadge(p, true); });
+    renderCart();
+}
+
+// ── Render Cart ───────────────────────────────────────
+function renderCart() {
+    var body  = document.getElementById('cartBody');
+    var empty = document.getElementById('empty');
+
+    if (!CART.length) {
+        body.innerHTML = '';
+        body.appendChild(empty);
+        empty.style.display = 'block';
+        document.getElementById('sellBtn').disabled = true;
+        document.getElementById('cnt').textContent  = '0';
+        updateTotals();
+        return;
     }
 
-    // ── Totals ────────────────────────────────
-    function updateTotals() {
-        const sub  = cart.reduce((s, i) => s + i.subtotal, 0);
-        const disc = parseFloat(document.getElementById('discountIn').value) || 0;
-        const tot  = Math.max(0, sub - disc);
+    empty.style.display = 'none';
 
-        document.getElementById('subtotalLbl').textContent = '₱' + sub.toFixed(2);
-        document.getElementById('totalLbl').textContent    = '₱' + tot.toFixed(2);
-        calcChange();
-    }
+    var total = CART.reduce(function(s, i) { return s + i.qty; }, 0);
+    document.getElementById('cnt').textContent = total;
 
-    function calcChange() {
-        const tot    = parseFloat(
-                           document.getElementById('totalLbl')
-                                   .textContent.replace('₱','')) || 0;
-        const paid   = parseFloat(
-                           document.getElementById('amtPaid').value) || 0;
-        const change = paid - tot;
-
-        document.getElementById('changeLbl').textContent =
-            '₱' + Math.max(0, change).toFixed(2);
-        document.getElementById('changeLbl').style.color =
-            change >= 0 ? '#16a34a' : '#dc2626';
-    }
-
-    // ── Payment Method ────────────────────────
-    function selectPay(method) {
-        payMethod = method;
-        document.querySelectorAll('.pay-btn')
-                .forEach(b => b.classList.remove('selected'));
-        document.querySelector(`[data-pay="${method}"]`)
-                .classList.add('selected');
-
-        const cashSection = document.getElementById('cashSection');
-        cashSection.style.display = method === 'utang' ? 'none' : 'block';
-    }
-
-    // ── Checkout ──────────────────────────────
-    function processCheckout() {
-        if (cart.length === 0) return;
-
-        const total = parseFloat(
-            document.getElementById('totalLbl').textContent.replace('₱','')) || 0;
-        const paid  = parseFloat(
-            document.getElementById('amtPaid').value) || 0;
-
-        if (payMethod === 'cash' && paid < total) {
-            alert('⚠️ Amount paid is less than total!');
-            document.getElementById('amtPaid').focus();
-            return;
-        }
-
-        const disc  = parseFloat(
-            document.getElementById('discountIn').value) || 0;
-
-        document.getElementById('fItems').value    = JSON.stringify(cart);
-        document.getElementById('fCust').value     = document.getElementById('custName').value || 'Walk-in';
-        document.getElementById('fDiscount').value = disc;
-        document.getElementById('fPaid').value     = payMethod === 'utang' ? 0 : paid;
-        document.getElementById('fPay').value      = payMethod;
-        document.getElementById('fNotes').value    = document.getElementById('notesIn').value;
-
-        document.getElementById('saleForm').submit();
-    }
-
-    // ── Search ────────────────────────────────
-    document.getElementById('searchProd').addEventListener('input', function() {
-        const q = this.value.toLowerCase();
-        document.querySelectorAll('.prod-item').forEach(el => {
-            const match = el.dataset.name.includes(q) ||
-                          el.dataset.barcode.includes(q);
-            el.style.display = match ? '' : 'none';
-        });
+    var html = '';
+    CART.forEach(function(item, idx) {
+        html +=
+        '<div class="cart-item">' +
+            '<div class="d-flex justify-content-between' +
+                        ' align-items-start mb-1">' +
+                '<div style="flex:1;min-width:0">' +
+                    '<div class="fw-bold text-truncate"' +
+                         ' style="font-size:.8rem">' +
+                        hEsc(item.name) +
+                    '</div>' +
+                    '<div style="font-size:.7rem;color:#64748b">' +
+                        '₱' + item.price.toFixed(2) +
+                        ' / ' + item.unit +
+                    '</div>' +
+                '</div>' +
+                '<button onclick="removeItem(' + idx + ')"' +
+                        ' style="background:none;border:none;' +
+                                'color:#ef4444;font-size:.95rem;' +
+                                'padding:0 0 0 5px;cursor:pointer">' +
+                    '✕' +
+                '</button>' +
+            '</div>' +
+            '<div class="d-flex align-items-center' +
+                        ' justify-content-between">' +
+                '<div class="qty-wrap">' +
+                    '<button class="qbtn m"' +
+                            ' onclick="qChange(' + idx + ',-1)">' +
+                        '−' +
+                    '</button>' +
+                    '<input type="number"' +
+                           ' class="qty-num"' +
+                           ' value="' + item.qty + '"' +
+                           ' min="1"' +
+                           ' max="' + item.maxQty + '"' +
+                           ' onchange="qSet(' + idx + ',this.value)"' +
+                           ' onclick="this.select()">' +
+                    '<button class="qbtn"' +
+                            ' onclick="qChange(' + idx + ',1)">' +
+                        '+' +
+                    '</button>' +
+                '</div>' +
+                '<div class="fw-bold" style="font-size:.88rem">' +
+                    '₱' + item.subtotal.toFixed(2) +
+                '</div>' +
+            '</div>' +
+        '</div>';
     });
 
-    // ── Category Filter ───────────────────────
-    function filterCat(cat, el) {
-        document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
-        el.classList.add('active');
-        document.querySelectorAll('.prod-item').forEach(item => {
-            item.style.display =
-                (cat === 'all' || item.dataset.cat === cat) ? '' : 'none';
-        });
+    body.innerHTML = html;
+    document.getElementById('sellBtn').disabled = false;
+    updateTotals();
+}
+
+// ── Totals ────────────────────────────────────────────
+function updateTotals() {
+    var sub = CART.reduce(function(s, i) { return s + i.subtotal; }, 0);
+    document.getElementById('sub').textContent =
+        '₱' + sub.toFixed(2);
+    document.getElementById('tot').textContent =
+        '₱' + sub.toFixed(2);
+    calcChange();
+}
+
+function calcChange() {
+    var tot  = parseFloat(
+        document.getElementById('tot').textContent.replace('₱','')
+    ) || 0;
+    var paid = parseFloat(
+        document.getElementById('paid').value
+    ) || 0;
+    var chng = paid - tot;
+    var el   = document.getElementById('chng');
+    el.textContent  = '₱' + Math.max(0, chng).toFixed(2);
+    el.style.color  = chng >= 0 ? '#16a34a' : '#dc2626';
+}
+
+// ── Payment ───────────────────────────────────────────
+function setPay(p) {
+    PAY = p;
+    document.querySelectorAll('.pay-opt').forEach(function(b) {
+        b.classList.remove('on');
+    });
+    document.querySelector('[data-p="' + p + '"]').classList.add('on');
+    document.getElementById('cashDiv').style.display =
+        p === 'utang' ? 'none' : 'block';
+}
+
+// ── Badge on product card ─────────────────────────────
+function setBadge(pid, remove) {
+    var el = document.getElementById('cb-' + pid);
+    if (!el) return;
+    if (remove) { el.style.display = 'none'; el.textContent = ''; return; }
+    var found = CART.find(function(i) { return i.pid === pid; });
+    if (found) {
+        el.textContent  = found.qty;
+        el.style.display = 'flex';
+    } else {
+        el.style.display = 'none';
+    }
+}
+
+// ── COMPLETE SALE ─────────────────────────────────────
+function doSale() {
+    if (!CART.length) {
+        alert('Cart is empty!');
+        return;
     }
 
-    // XSS escape
-    function esc(str) {
-        return String(str)
-            .replace(/&/g,'&amp;').replace(/</g,'&lt;')
-            .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    var tot  = parseFloat(
+        document.getElementById('tot').textContent.replace('₱','')
+    ) || 0;
+    var paid = parseFloat(
+        document.getElementById('paid').value
+    ) || 0;
+
+    if (PAY === 'cash' && paid < tot) {
+        alert('Amount paid is less than total!\nTotal: ₱' +
+              tot.toFixed(2) + '\nPaid: ₱' + paid.toFixed(2));
+        document.getElementById('paid').focus();
+        return;
     }
+
+    // ✅ Build items array exactly as PHP expects
+    var items = CART.map(function(item) {
+        return {
+            product_id : item.pid,
+            qty        : item.qty,
+            price      : item.price,
+            subtotal   : item.subtotal
+        };
+    });
+
+    var itemsJSON = JSON.stringify(items);
+
+    // ✅ Fill hidden form fields
+    document.getElementById('f_items').value = itemsJSON;
+    document.getElementById('f_cust').value  =
+        (document.getElementById('cust').value || '').trim() ||
+        'Walk-in Customer';
+    document.getElementById('f_disc').value  = '0';
+    document.getElementById('f_paid').value  =
+        PAY === 'utang' ? '0' : String(paid);
+    document.getElementById('f_pay').value   = PAY;
+    document.getElementById('f_notes').value = '';
+
+    // ✅ Verify data before submitting
+    console.log('=== SUBMITTING SALE ===');
+    console.log('Items JSON:', itemsJSON);
+    console.log('Customer:', document.getElementById('f_cust').value);
+    console.log('Payment:', PAY);
+    console.log('Paid:', document.getElementById('f_paid').value);
+    console.log('Total:', tot);
+
+    // ✅ Show loading state
+    var btn          = document.getElementById('sellBtn');
+    btn.disabled     = true;
+    btn.textContent  = 'Processing...';
+
+    // ✅ Submit
+    var form = document.getElementById('saleForm');
+    console.log('Form action:', form.action);
+    console.log('Form method:', form.method);
+
+    form.submit();
+}
+
+// ── Search ────────────────────────────────────────────
+document.getElementById('srch').addEventListener('input', function() {
+    var q = this.value.toLowerCase().trim();
+    document.querySelectorAll('.pi').forEach(function(el) {
+        var ok = !q ||
+                 el.dataset.name.includes(q) ||
+                 el.dataset.bc.includes(q);
+        el.style.display = ok ? '' : 'none';
+    });
+});
+
+// ── Category filter ───────────────────────────────────
+function catFilter(cat, el) {
+    document.querySelectorAll('.cat-pill').forEach(function(p) {
+        p.classList.remove('on');
+    });
+    el.classList.add('on');
+    document.querySelectorAll('.pi').forEach(function(item) {
+        item.style.display =
+            (cat === 'all' || item.dataset.cat === cat) ? '' : 'none';
+    });
+    document.getElementById('srch').value = '';
+}
+
+// ── Escape HTML ───────────────────────────────────────
+function hEsc(s) {
+    return String(s)
+        .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+        .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
 </script>
+
 </body>
 </html>

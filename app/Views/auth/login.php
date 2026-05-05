@@ -1,4 +1,3 @@
-<?php  ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,10 +8,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * { font-family: 'Nunito', sans-serif; }
+        * {
+            font-family: 'Nunito', sans-serif;
+            box-sizing: border-box;
+        }
 
         body {
             min-height: 100vh;
+            margin: 0;
             background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 60%, #0f172a 100%);
             display: flex;
             align-items: center;
@@ -30,8 +33,9 @@
             margin-bottom: 28px;
         }
 
-        .auth-brand .brand-icon {
-            width: 70px; height: 70px;
+        .brand-icon {
+            width: 70px;
+            height: 70px;
             background: #f97316;
             border-radius: 20px;
             display: flex;
@@ -44,12 +48,12 @@
         .auth-brand h2 {
             color: #fff;
             font-weight: 800;
-            margin: 0;
-            font-size: 1.8rem;
+            font-size: 1.9rem;
+            margin: 0 0 4px;
         }
 
         .auth-brand p {
-            color: rgba(255,255,255,.5);
+            color: rgba(255,255,255,0.45);
             font-size: .82rem;
             margin: 0;
         }
@@ -58,16 +62,17 @@
             background: #fff;
             border-radius: 20px;
             padding: 36px;
-            box-shadow: 0 25px 60px rgba(0,0,0,.35);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.35);
         }
 
         .auth-card h5 {
             font-weight: 800;
             color: #1e293b;
-            margin-bottom: 6px;
+            font-size: 1.2rem;
+            margin: 0 0 4px;
         }
 
-        .auth-card .subtitle {
+        .subtitle {
             color: #64748b;
             font-size: .82rem;
             margin-bottom: 24px;
@@ -77,6 +82,7 @@
             font-size: .8rem;
             font-weight: 700;
             color: #475569;
+            margin-bottom: 5px;
         }
 
         .form-control {
@@ -85,11 +91,47 @@
             padding: 10px 14px;
             font-size: .875rem;
             font-family: 'Nunito', sans-serif;
+            transition: border-color .2s, box-shadow .2s;
         }
 
         .form-control:focus {
             border-color: #2563eb;
             box-shadow: 0 0 0 3px rgba(37,99,235,.12);
+            outline: none;
+        }
+
+        .input-icon {
+            background: #f8fafc;
+            border: 1.5px solid #e2e8f0;
+            border-right: none;
+            border-radius: 10px 0 0 10px;
+            padding: 0 12px;
+            display: flex;
+            align-items: center;
+            color: #94a3b8;
+        }
+
+        .input-icon-right {
+            background: #f8fafc;
+            border: 1.5px solid #e2e8f0;
+            border-left: none;
+            border-radius: 0 10px 10px 0;
+            padding: 0 12px;
+            display: flex;
+            align-items: center;
+            color: #94a3b8;
+            cursor: pointer;
+        }
+
+        .form-control.with-left-icon {
+            border-left: none;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .form-control.with-both-icon {
+            border-left: none;
+            border-right: none;
+            border-radius: 0;
         }
 
         .btn-login {
@@ -97,31 +139,49 @@
             color: #fff;
             border: none;
             border-radius: 10px;
-            padding: 11px;
+            padding: 12px;
             font-size: .9rem;
             font-weight: 700;
             width: 100%;
-            transition: all .2s;
+            cursor: pointer;
             font-family: 'Nunito', sans-serif;
+            transition: background .2s, transform .2s;
         }
 
         .btn-login:hover {
             background: #1d4ed8;
             transform: translateY(-1px);
-            box-shadow: 0 8px 20px rgba(37,99,235,.3);
+        }
+
+        .alert {
+            border-radius: 10px;
+            border: none;
+            font-size: .855rem;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 600;
+            padding: 12px 16px;
+            margin-bottom: 20px;
+        }
+
+        .alert-danger {
+            background: #fef2f2;
+            color: #dc2626;
+        }
+
+        .alert-success {
+            background: #f0fdf4;
+            color: #16a34a;
         }
 
         .demo-box {
             background: #f0f9ff;
-            border: 1px solid #bae6fd;
+            border: 1.5px solid #bae6fd;
             border-radius: 10px;
             padding: 12px 15px;
             margin-top: 20px;
             font-size: .78rem;
             color: #0369a1;
         }
-
-        .demo-box strong { color: #0c4a6e; }
 
         .auth-footer {
             text-align: center;
@@ -136,22 +196,8 @@
             text-decoration: none;
         }
 
-        .alert {
-            border-radius: 10px;
-            border: none;
-            font-size: .855rem;
-            font-family: 'Nunito', sans-serif;
-            font-weight: 600;
-        }
-
-        .eye-toggle {
-            cursor: pointer;
-            border: 1.5px solid #e2e8f0;
-            border-left: none;
-            border-radius: 0 10px 10px 0;
-            background: #fff;
-            color: #94a3b8;
-            padding: 0 14px;
+        .auth-footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -169,23 +215,25 @@
     <!-- Card -->
     <div class="auth-card">
         <h5>Welcome back! 👋</h5>
-        <p class="subtitle">Login to manage your store</p>
+        <p class="subtitle">Sign in to manage your store</p>
 
-        <!-- Alerts -->
+        <!-- Error Alert -->
         <?php if (session()->getFlashdata('error')): ?>
             <div class="alert alert-danger">
-                <i class="bi bi-exclamation-circle me-1"></i>
-                <?= session()->getFlashdata('error') ?>
+                <i class="bi bi-exclamation-circle-fill me-2"></i>
+                <?= esc(session()->getFlashdata('error')) ?>
             </div>
         <?php endif; ?>
 
+        <!-- Success Alert -->
         <?php if (session()->getFlashdata('success')): ?>
             <div class="alert alert-success">
-                <i class="bi bi-check-circle me-1"></i>
-                <?= session()->getFlashdata('success') ?>
+                <i class="bi bi-check-circle-fill me-2"></i>
+                <?= esc(session()->getFlashdata('success')) ?>
             </div>
         <?php endif; ?>
 
+        <!-- Errors List -->
         <?php if (session()->getFlashdata('errors')): ?>
             <div class="alert alert-danger">
                 <?php foreach (session()->getFlashdata('errors') as $err): ?>
@@ -194,55 +242,66 @@
             </div>
         <?php endif; ?>
 
-        <!-- Form -->
+        <!-- Login Form -->
         <form action="<?= base_url('login') ?>" method="POST">
             <?= csrf_field() ?>
 
+            <!-- Email -->
             <div class="mb-3">
                 <label class="form-label">Email Address</label>
-                <div class="input-group">
-                    <span class="input-group-text"
-                          style="border-radius:10px 0 0 10px;
-                                 border:1.5px solid #e2e8f0;border-right:none;
-                                 background:#f8fafc;color:#94a3b8;">
+                <div class="d-flex">
+                    <span class="input-icon">
                         <i class="bi bi-envelope-fill"></i>
                     </span>
-                    <input type="email" name="email" class="form-control"
-                           style="border-radius:0 10px 10px 0;border-left:none;"
+                    <input type="email"
+                           name="email"
+                           class="form-control with-left-icon"
                            placeholder="you@example.com"
-                           value="<?= old('email') ?>" required>
+                           value="<?= esc(old('email')) ?>"
+                           required>
                 </div>
             </div>
 
+            <!-- Password -->
             <div class="mb-4">
                 <label class="form-label">Password</label>
-                <div class="input-group">
-                    <span class="input-group-text"
-                          style="border-radius:10px 0 0 10px;
-                                 border:1.5px solid #e2e8f0;border-right:none;
-                                 background:#f8fafc;color:#94a3b8;">
+                <div class="d-flex">
+                    <span class="input-icon">
                         <i class="bi bi-lock-fill"></i>
                     </span>
-                    <input type="password" name="password" id="pwInput"
-                           class="form-control"
-                           style="border-left:none;border-right:none;border-radius:0;"
-                           placeholder="••••••••" required>
-                    <span class="eye-toggle" onclick="togglePw()">
+                    <input type="password"
+                           name="password"
+                           id="pwInput"
+                           class="form-control with-both-icon"
+                           placeholder="••••••••"
+                           required>
+                    <span class="input-icon-right" onclick="togglePw()">
                         <i class="bi bi-eye" id="eyeIcon"></i>
                     </span>
                 </div>
             </div>
 
+            <!-- Submit -->
             <button type="submit" class="btn-login">
                 <i class="bi bi-box-arrow-in-right me-2"></i>Sign In
             </button>
         </form>
 
-        <!-- Demo Info -->
+        <!-- Demo Credentials -->
         <div class="demo-box">
-            <div class="fw-bold mb-1">🔑 Demo Accounts:</div>
-            <div>Owner: <strong>owner@websari.com</strong> / <strong>owner123</strong></div>
-            <div>Staff: <strong>staff@websari.com</strong> / <strong>password</strong></div>
+            <div style="font-weight:800;margin-bottom:6px;">
+                🔑 Demo Accounts:
+            </div>
+            <div>
+                <strong>Owner</strong> →
+                owner@websari.com /
+                <strong>password</strong>
+            </div>
+            <div>
+                <strong>Staff</strong> →
+                staff@websari.com /
+                <strong>password</strong>
+            </div>
         </div>
     </div>
 
@@ -254,19 +313,19 @@
 
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     function togglePw() {
-        const pw   = document.getElementById('pwInput');
-        const icon = document.getElementById('eyeIcon');
-        if (pw.type === 'password') {
-            pw.type = 'text';
+        var input = document.getElementById('pwInput');
+        var icon  = document.getElementById('eyeIcon');
+        if (input.type === 'password') {
+            input.type    = 'text';
             icon.className = 'bi bi-eye-slash';
         } else {
-            pw.type = 'password';
+            input.type    = 'password';
             icon.className = 'bi bi-eye';
         }
     }
 </script>
+
 </body>
 </html>

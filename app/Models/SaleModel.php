@@ -10,14 +10,15 @@ class SaleModel extends Model
     protected $table         = 'sales';
     protected $primaryKey    = 'id';
     protected $allowedFields = [
-        'invoice_no','user_id','customer_name',
-        'subtotal','discount','total',
-        'amount_paid','change_amount',
-        'payment_method','status','notes'
+        'invoice_no', 'user_id', 'customer_name',
+        'subtotal', 'discount', 'total',
+        'amount_paid', 'change_amount',
+        'payment_method', 'status', 'notes',
     ];
     protected $useTimestamps = true;
+    protected $createdField  = 'created_at';
+    protected $updatedField  = 'updated_at';
 
-    // Generate unique invoice number
     public function generateInvoice()
     {
         $prefix = 'WS-' . date('Ymd') . '-';
@@ -30,7 +31,6 @@ class SaleModel extends Model
         return $prefix . str_pad($num, 4, '0', STR_PAD_LEFT);
     }
 
-    // All sales with cashier name
     public function getAllWithCashier()
     {
         return $this->select('sales.*, users.name as cashier_name')
@@ -39,7 +39,6 @@ class SaleModel extends Model
                     ->findAll();
     }
 
-    // Single sale with items
     public function getWithDetails(int $id)
     {
         $sale = $this->select('sales.*, users.name as cashier_name')
@@ -47,13 +46,12 @@ class SaleModel extends Model
                      ->find($id);
 
         if ($sale) {
-            $itemModel    = new SaleItemModel();
+            $itemModel     = new SaleItemModel();
             $sale['items'] = $itemModel->getBySale($id);
         }
         return $sale;
     }
 
-    // Today's sales
     public function todaySales()
     {
         return $this->where('DATE(created_at)', date('Y-m-d'))
@@ -61,7 +59,6 @@ class SaleModel extends Model
                     ->findAll();
     }
 
-    // Today's revenue
     public function todayRevenue()
     {
         $r = $this->selectSum('total', 'revenue')
@@ -71,18 +68,16 @@ class SaleModel extends Model
         return $r['revenue'] ?? 0;
     }
 
-    // Monthly revenue for chart
     public function monthlyRevenue()
     {
         return $this->select('MONTH(created_at) as month, SUM(total) as revenue')
-                    ->where('YEAR(created_at)',  date('Y'))
+                    ->where('YEAR(created_at)', date('Y'))
                     ->where('status', 'completed')
                     ->groupBy('MONTH(created_at)')
                     ->orderBy('month', 'ASC')
                     ->findAll();
     }
 
-    // Total revenue in date range
     public function revenueByRange(string $from, string $to)
     {
         $r = $this->selectSum('total', 'revenue')

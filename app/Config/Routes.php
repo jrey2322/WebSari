@@ -2,64 +2,52 @@
 
 use CodeIgniter\Router\RouteCollection;
 
-/**
- * @var RouteCollection $routes
- */
-$routes->get('/', 'Home::index');
+/** @var RouteCollection $routes */
 
 $routes->get('/', 'Auth::login');
 
-// ── Auth ──────────────────────────────────
-$routes->get( '/login',    'Auth::login');
-$routes->post('/login',    'Auth::authenticate');
-$routes->get( '/register', 'Auth::register');
-$routes->post('/register', 'Auth::registerStore');
-$routes->get( '/logout',   'Auth::logout');
+// Auth
+$routes->get( 'login',    'Auth::login');
+$routes->post('login',    'Auth::authenticate');
+$routes->get( 'register', 'Auth::register');
+$routes->post('register', 'Auth::registerStore');
+$routes->get( 'logout',   'Auth::logout');
 
-// ── Dashboard ────────────────────────────
-$routes->get('/dashboard', 'Dashboard::index');
+// Dashboard
+$routes->get('dashboard', 'Dashboard::index');
 
-// ── Products ─────────────────────────────
-$routes->group('products', function($routes) {
-    $routes->get('/',               'Products::index');
-    $routes->get('create',          'Products::create');
-    $routes->post('store',          'Products::store');
-    $routes->get('edit/(:num)',     'Products::edit/$1');
-    $routes->post('update/(:num)',  'Products::update/$1');
-    $routes->get('delete/(:num)',   'Products::delete/$1');
-    $routes->get('low-stock',       'Products::lowStock');
-    $routes->get('search',          'Products::search');
-});
+// Products
+$routes->get( 'products',               'Products::index');
+$routes->get( 'products/create',        'Products::create');
+$routes->post('products/store',         'Products::store');
+$routes->get( 'products/edit/(:num)',   'Products::edit/$1');
+$routes->post('products/update/(:num)', 'Products::update/$1');
+$routes->get( 'products/delete/(:num)', 'Products::delete/$1');
+$routes->get( 'products/low-stock',    'Products::lowStock');
+$routes->get( 'products/search',       'Products::search');
 
-// ── Sales ────────────────────────────────
-$routes->group('sales', function($routes) {
-    $routes->get('/',              'Sales::index');
-    $routes->get('create',        'Sales::create');
-    $routes->post('store',        'Sales::store');
-    $routes->get('view/(:num)',   'Sales::view/$1');
-    $routes->get('invoice/(:num)','Sales::invoice/$1');
-    $routes->get('void/(:num)',   'Sales::void/$1');
-});
+// Sales
+$routes->get( 'sales',                'Sales::index');
+$routes->get( 'sales/create',         'Sales::create');
+$routes->post('sales/store',          'Sales::store');   
+$routes->get( 'sales/view/(:num)',    'Sales::view/$1');
+$routes->get( 'sales/invoice/(:num)', 'Sales::invoice/$1');
+$routes->get( 'sales/void/(:num)',    'Sales::void/$1');
 
-// ── Categories ───────────────────────────
-$routes->group('categories', function($routes) {
-    $routes->get('/',              'Categories::index');
-    $routes->post('store',         'Categories::store');
-    $routes->post('update/(:num)', 'Categories::update/$1');
-    $routes->get('delete/(:num)',  'Categories::delete/$1');
-});
+// Categories
+$routes->get( 'categories',               'Categories::index');
+$routes->post('categories/store',         'Categories::store');
+$routes->post('categories/update/(:num)', 'Categories::update/$1');
+$routes->get( 'categories/delete/(:num)', 'Categories::delete/$1');
 
-// ── Reports ──────────────────────────────
-$routes->group('reports', function($routes) {
-    $routes->get('/',          'Reports::index');
-    $routes->get('sales',      'Reports::sales');
-    $routes->get('inventory',  'Reports::inventory');
-});
+// Reports
+$routes->get('reports',           'Reports::index');
+$routes->get('reports/sales',     'Reports::sales');
+$routes->get('reports/inventory', 'Reports::inventory');
 
-// ── Users (Owner only) ───────────────────
-$routes->group('users', function($routes) {
-    $routes->get('/',              'Users::index');
-    $routes->post('store',         'Users::store');
-    $routes->get('toggle/(:num)',  'Users::toggle/$1');
-    $routes->get('delete/(:num)',  'Users::delete/$1');
-});
+// Users
+$routes->get( 'users',               'Users::index');
+$routes->post('users/store',         'Users::store');
+$routes->get( 'users/toggle/(:num)', 'Users::toggle/$1');
+$routes->get( 'users/delete/(:num)', 'Users::delete/$1');
+

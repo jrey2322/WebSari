@@ -6,119 +6,142 @@ use App\Models\UserModel;
 
 class Auth extends BaseController
 {
-    // ── Login Page ────────────────────────────
     public function login()
     {
+        // Already logged in
         if ($this->session->get('logged_in')) {
-            return redirect()->to('/dashboard');
+            return redirect()->to(base_url('dashboard'));
         }
+
         return view('auth/login');
     }
 
-    // ── Authenticate ──────────────────────────
     public function authenticate()
     {
-        $rules = [
-            'email'    => 'required|valid_email',
-            'password' => 'required',
-        ];
+        // Basic validation
+        $email    = trim($this->request->getPost('email'));
+        $password = $this->request->getPost('password');
 
-        if (!$this->validate($rules)) {
-            return redirect()->back()
+        if (empty($email) || empty($password)) {
+            return redirect()->to(base_url('login'))
                              ->withInput()
-                             ->with('errors', $this->validator->getErrors());
+                             ->with('error', 'Email and password are required.');
         }
 
+        // Find user
         $model = new UserModel();
-        $user  = $model->findByEmail($this->request->getPost('email'));
+        $user  = $model->where('email', $email)->first();
 
-        if (!$user || $user['status'] === 'inactive') {
-            return redirect()->back()
+        // Check if user exists
+        if (!$user) {
+            return redirect()->to(base_url('login'))
                              ->withInput()
-                             ->with('error', 'Account not found or deactivated.');
+                             ->with('error', 'No account found with that email.');
         }
 
-        if (!password_verify($this->request->getPost('password'), $user['password'])) {
-            return redirect()->back()
+        // Check if active
+        if ($user['status'] === 'inactive') {
+            return redirect()->to(base_url('login'))
                              ->withInput()
-                             ->with('error', 'Incorrect password.');
+                             ->with('error', 'Your account has been deactivated.');
         }
 
-        // Set session
+        // Check password
+        if (!password_verify($password, $user['password'])) {
+            return redirect()->to(base_url('login'))
+                             ->withInput()
+                             ->with('error', 'Incorrect password. Please try again.');
+        }
+
+        // ✅ Login success - set session
         $this->session->set([
-            'logged_in' => true,
-            'user_id'   => $user['id'],
-            'user_name' => $user['name'],
-            'user_role' => $user['role'],
-            'user_email'=> $user['email'],
+            'logged_in'  => true,
+            'user_id'    => $user['id'],
+            'user_name'  => $user['name'],
+            'user_role'  => $user['role'],
+            'user_email' => $user['email'],
         ]);
 
-        return redirect()->to('/dashboard')
+        return redirect()->to(base_url('dashboard'))
                          ->with('success', 'Welcome back, ' . $user['name'] . '! 👋');
     }
 
-    // ── Register Page ─────────────────────────
     public function register()
     {
         if ($this->session->get('logged_in')) {
-            return redirect()->to('/dashboard');
+            return redirect()->to(base_url('dashboard'));
         }
+
         return view('auth/register');
     }
 
-    // ── Process Registration ──────────────────
     public function registerStore()
     {
-        $rules = [
-            'name'             => 'required|min_length[2]|max_length[100]',
-            'email'            => 'required|valid_email|is_unique[users.email]',
-            'password'         => 'required|min_length[6]',
-            'confirm_password' => 'required|matches[password]',
-        ];
+        $name            = trim($this->request->getPost('name'));
+        $email           = trim($this->request->getPost('email'));
+        $password        = $this->request->getPost('password');
+        $confirmPassword = $this->request->getPost('confirm_password');
+        $role            = $this->request->getPost('role') ?? 'staff';
+        $phone           = trim($this->request->getPost('phone') ?? '');
 
-        $messages = [
-            'email' => [
-                'is_unique' => 'This email is already registered.'
-            ],
-            'confirm_password' => [
-                'matches' => 'Passwords do not match.'
-            ],
-        ];
+        // Validate manually
+        $errors = [];
 
-        if (!$this->validate($rules, $messages)) {
-            return redirect()->back()
-                             ->withInput()
-                             ->with('errors', $this->validator->getErrors());
+        if (empty($name)) {
+            $errors[] = 'Full name is required.';
         }
 
-        $model = new UserModel();
-        $role  = $this->request->getPost('role') ?? 'staff';
+        if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errors[] = 'Valid email address is required.';
+        }
 
-        // Only allow owner registration if no owner exists yet
+        if (empty($password) || strlen($password) < 6) {
+            $errors[] = 'Password must be at least 6 characters.';
+        }
+
+        if ($password !== $confirmPassword) {
+            $errors[] = 'Passwords do not match.';
+        }
+
+        // Check email unique
+        $model = new UserModel();
+        $existing = $model->where('email', $email)->first();
+        if ($existing) {
+            $errors[] = 'This email is already registered.';
+        }
+
+        if (!empty($errors)) {
+            return redirect()->to(base_url('register'))
+                             ->withInput()
+                             ->with('errors', $errors);
+        }
+
+        // Only allow one owner
         if ($role === 'owner') {
-            $existingOwner = $model->where('role', 'owner')->first();
-            if ($existingOwner) {
-                $role = 'staff'; // Downgrade to staff
+            $ownerExists = $model->where('role', 'owner')->first();
+            if ($ownerExists) {
+                $role = 'staff';
             }
         }
 
+        // Insert
         $model->insert([
-            'name'     => $this->request->getPost('name'),
-            'email'    => $this->request->getPost('email'),
-            'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
+            'name'     => $name,
+            'email'    => $email,
+            'password' => password_hash($password, PASSWORD_DEFAULT),
             'role'     => $role,
-            'phone'    => $this->request->getPost('phone'),
+            'phone'    => $phone,
+            'status'   => 'active',
         ]);
 
-        return redirect()->to('/login')
-                         ->with('success', 'Account created! You can now login.');
+        return redirect()->to(base_url('login'))
+                         ->with('success', 'Account created successfully! You can now login. 🎉');
     }
 
-    // ── Logout ────────────────────────────────
     public function logout()
     {
         $this->session->destroy();
-        return redirect()->to('/login')
+        return redirect()->to(base_url('login'))
                          ->with('success', 'Logged out successfully. Goodbye! 👋');
     }
 }

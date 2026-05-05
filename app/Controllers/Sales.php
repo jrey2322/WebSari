@@ -48,78 +48,130 @@ class Sales extends BaseController
         $redirect = $this->checkSession();
         if ($redirect) return $redirect;
 
-        $items = json_decode($this->request->getPost('items'), true);
+        // ✅ Get raw post data
+        $rawItems = $this->request->getPost('items');
 
-        if (empty($items)) {
-            return redirect()->back()
+        // ✅ Debug: log what we received
+        log_message('debug', 'Sales::store - raw items: ' . $rawItems);
+
+        if (empty($rawItems)) {
+            return redirect()->to(base_url('sales/create'))
                              ->with('error', 'Cart is empty! Add items first.');
         }
 
-        // Stock validation
+        // ✅ Decode JSON
+        $items = json_decode($rawItems, true);
+
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            return redirect()->to(base_url('sales/create'))
+                             ->with('error', 'Invalid cart data. Please try again.');
+        }
+
+        if (empty($items) || !is_array($items)) {
+            return redirect()->to(base_url('sales/create'))
+                             ->with('error', 'Cart is empty! Add items first.');
+        }
+
+        // ✅ Validate stock for each item
         foreach ($items as $item) {
+            if (empty($item['product_id']) || empty($item['qty'])) {
+                continue;
+            }
+
             $product = $this->productModel->find($item['product_id']);
+
             if (!$product) {
-                return redirect()->back()
+                return redirect()->to(base_url('sales/create'))
                                  ->with('error', 'Product not found.');
             }
-            if ($product['stock'] < $item['quantity']) {
-                return redirect()->back()
+
+            if ($product['stock'] < $item['qty']) {
+                return redirect()->to(base_url('sales/create'))
                                  ->with('error',
                                      'Not enough stock for: ' . $product['name'] .
                                      ' (Available: ' . $product['stock'] . ')');
             }
         }
 
-        $subtotal      = (float) array_sum(array_column($items, 'subtotal'));
-        $discount      = (float) ($this->request->getPost('discount') ?? 0);
+        // ✅ Calculate totals
+        $subtotal = 0;
+        foreach ($items as $item) {
+            $subtotal += floatval($item['subtotal']);
+        }
+
+        $discount      = floatval($this->request->getPost('discount') ?? 0);
         $total         = max(0, $subtotal - $discount);
         $paymentMethod = $this->request->getPost('payment_method') ?? 'cash';
-        $paid          = $paymentMethod === 'utang'
-                            ? 0
-                            : (float) ($this->request->getPost('amount_paid') ?? 0);
-        $change        = max(0, $paid - $total);
-        $status        = $paymentMethod === 'utang' ? 'utang' : 'completed';
+        $customerName  = $this->request->getPost('customer_name') ?: 'Walk-in Customer';
+        $notes         = $this->request->getPost('notes') ?? '';
 
+        $amountPaid = $paymentMethod === 'utang'
+            ? 0
+            : floatval($this->request->getPost('amount_paid') ?? 0);
+
+        $changeAmount = max(0, $amountPaid - $total);
+        $status       = $paymentMethod === 'utang' ? 'utang' : 'completed';
+
+        // ✅ Start DB transaction
         $db = \Config\Database::connect();
         $db->transStart();
 
-        $saleId = $this->saleModel->insert([
-            'invoice_no'    => $this->saleModel->generateInvoice(),
-            'user_id'       => $this->session->get('user_id'),
-            'customer_name' => $this->request->getPost('customer_name') ?: 'Walk-in',
-            'subtotal'      => $subtotal,
-            'discount'      => $discount,
-            'total'         => $total,
-            'amount_paid'   => $paid,
-            'change_amount' => $change,
-            'payment_method'=> $paymentMethod,
-            'status'        => $status,
-            'notes'         => $this->request->getPost('notes'),
-        ]);
-
-        foreach ($items as $item) {
-            $this->saleItemModel->insert([
-                'sale_id'    => $saleId,
-                'product_id' => $item['product_id'],
-                'quantity'   => $item['quantity'],
-                'price'      => $item['price'],
-                'subtotal'   => $item['subtotal'],
+        try {
+            // Insert sale record
+            $saleId = $this->saleModel->insert([
+                'invoice_no'     => $this->saleModel->generateInvoice(),
+                'user_id'        => $this->session->get('user_id'),
+                'customer_name'  => $customerName,
+                'subtotal'       => $subtotal,
+                'discount'       => $discount,
+                'total'          => $total,
+                'amount_paid'    => $amountPaid,
+                'change_amount'  => $changeAmount,
+                'payment_method' => $paymentMethod,
+                'status'         => $status,
+                'notes'          => $notes,
             ]);
-            // Don't deduct stock for utang until paid
-            if ($status !== 'utang') {
-                $this->productModel->deductStock($item['product_id'], $item['quantity']);
+
+            if (!$saleId) {
+                throw new \Exception('Failed to create sale record.');
             }
+
+            // Insert each sale item & deduct stock
+            foreach ($items as $item) {
+                // ✅ Support both 'qty' and 'quantity' keys
+                $qty = isset($item['qty']) ? intval($item['qty']) : intval($item['quantity'] ?? 0);
+            
+                $this->saleItemModel->insert([
+                    'sale_id'    => $saleId,
+                    'product_id' => intval($item['product_id']),
+                    'quantity'   => $qty, 
+                    'price'      => floatval($item['price']),
+                    'subtotal'   => floatval($item['subtotal']),
+                ]);
+            
+                if ($status !== 'utang') {
+                    $this->productModel->deductStock(
+                        intval($item['product_id']),
+                        $qty
+                    );
+                }
+            }
+
+            $db->transComplete();
+
+            if ($db->transStatus() === false) {
+                throw new \Exception('Transaction failed.');
+            }
+
+            return redirect()->to(base_url('sales/view/' . $saleId))
+                             ->with('success', 'Sale completed! 🎉');
+
+        } catch (\Exception $e) {
+            $db->transRollback();
+            log_message('error', 'Sales::store error: ' . $e->getMessage());
+            return redirect()->to(base_url('sales/create'))
+                             ->with('error', 'Sale failed: ' . $e->getMessage());
         }
-
-        $db->transComplete();
-
-        if ($db->transStatus() === false) {
-            return redirect()->back()
-                             ->with('error', 'Transaction failed. Please try again.');
-        }
-
-        return redirect()->to('/sales/view/' . $saleId)
-                         ->with('success', 'Sale recorded successfully! 🎉');
     }
 
     public function view(int $id)
@@ -128,8 +180,10 @@ class Sales extends BaseController
         if ($redirect) return $redirect;
 
         $sale = $this->saleModel->getWithDetails($id);
+
         if (!$sale) {
-            return redirect()->to('/sales')->with('error', 'Sale not found.');
+            return redirect()->to(base_url('sales'))
+                             ->with('error', 'Sale not found.');
         }
 
         $data = [
@@ -145,11 +199,16 @@ class Sales extends BaseController
         if ($redirect) return $redirect;
 
         $sale = $this->saleModel->getWithDetails($id);
+
         if (!$sale) {
-            return redirect()->to('/sales')->with('error', 'Sale not found.');
+            return redirect()->to(base_url('sales'))
+                             ->with('error', 'Sale not found.');
         }
 
-        return view('sales/invoice', ['title' => 'Invoice', 'sale' => $sale]);
+        return view('sales/invoice', [
+            'title' => 'Invoice',
+            'sale'  => $sale,
+        ]);
     }
 
     public function void(int $id)
@@ -158,21 +217,21 @@ class Sales extends BaseController
         if ($redirect) return $redirect;
 
         $sale = $this->saleModel->find($id);
+
         if ($sale && $sale['status'] === 'completed') {
-            // Restore stock
             $items = $this->saleItemModel->getBySale($id);
             foreach ($items as $item) {
                 $product = $this->productModel->find($item['product_id']);
                 if ($product) {
                     $this->productModel->update($item['product_id'], [
-                        'stock' => $product['stock'] + $item['quantity']
+                        'stock' => $product['stock'] + $item['quantity'],
                     ]);
                 }
             }
             $this->saleModel->update($id, ['status' => 'void']);
         }
 
-        return redirect()->to('/sales')
+        return redirect()->to(base_url('sales'))
                          ->with('success', 'Sale voided and stock restored.');
     }
 }
