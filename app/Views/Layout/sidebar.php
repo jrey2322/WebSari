@@ -8,8 +8,7 @@ function isActive(string $path): string {
 }
 ?>
 
-<aside class="ws-sidebar" id="wsSidebar">
-
+<aside class="ws-sidebar">
     <!-- Brand -->
     <div class="ws-brand">
         <div class="ws-brand-icon">🏪</div>
@@ -17,6 +16,11 @@ function isActive(string $path): string {
             <h5>WebSari</h5>
             <small>Sari-Sari Store System</small>
         </div>
+        <!-- Close btn for mobile -->
+        <button class="btn btn-link text-white ms-auto d-lg-none p-0" onclick="toggleSidebar()">
+            <i class="bi bi-x-lg" style="font-size: 1.5rem;"></i>
+        </button>
+    </div>
     </div>
 
     <!-- Navigation -->

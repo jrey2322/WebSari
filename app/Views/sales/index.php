@@ -5,8 +5,13 @@
 <div class="ws-main">
     <header class="ws-topbar">
         <div class="page-title">
-            Sales History
-            <small>All transactions</small>
+            <button class="mobile-toggle" onclick="toggleSidebar()">
+                <i class="bi bi-list"></i>
+            </button>
+            <div class="d-flex flex-column">
+                <span style="font-size: 1.1rem; line-height: 1.2">Sales History</span>
+                <small style="font-size: .7rem">All transactions</small>
+            </div>
         </div>
         <a href="<?= base_url('sales/create') ?>"
            class="btn btn-ws-orange btn-sm">

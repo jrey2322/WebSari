@@ -231,6 +231,19 @@
         color: var(--text);
         margin: 0;
         flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .mobile-toggle {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: var(--text);
+        padding: 0;
+        cursor: pointer;
     }
 
     .ws-topbar .page-title small {
@@ -409,12 +422,35 @@
         border-radius: 3px;
     }
 
-    /* ── RESPONSIVE ─────────────────────────── */
-    @media (max-width: 991px) {
-        .ws-sidebar { transform: translateX(-100%); }
-        .ws-sidebar.show { transform: translateX(0); }
-        .ws-main { margin-left: 0; }
+    /* ── MOBILE OVERRIDES ────────────────────── */
+    @media (max-width: 991.98px) {
+        :root { --sidebar-w: 0px !important; }
+        .ws-sidebar {
+            transform: translateX(-100%);
+            width: 280px;
+        }
+        .ws-sidebar.show {
+            transform: translateX(0);
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+        }
+        .ws-main { 
+            margin-left: 0 !important; 
+            width: 100% !important;
+        }
+        .ws-content { padding: 15px; }
+        .ws-topbar { padding: 0 15px; }
+        .mobile-toggle { display: block !important; }
+        .ws-sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 1040;
+        }
+        .ws-sidebar-overlay.show { display: block; }
     }
+
+    /* ── UTILITIES ──────────────────────────── */
 
     /* ── ANIMATIONS ─────────────────────────── */
     .fade-in {
@@ -427,4 +463,16 @@
     }
     </style>
 </head>
-<body>
+<body class="<?= isset($body_class) ? $body_class : '' ?>">
+
+<!-- Sidebar Overlay -->
+<div class="ws-sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+<script>
+    function toggleSidebar() {
+        const sidebar = document.querySelector('.ws-sidebar');
+        const overlay = document.getElementById('sidebarOverlay');
+        sidebar.classList.toggle('show');
+        overlay.classList.toggle('show');
+    }
+</script>

@@ -5,8 +5,13 @@
 <div class="ws-main">
     <header class="ws-topbar">
         <div class="page-title">
-            Inventory Report
-            <small>Current Stock Overview</small>
+            <button class="mobile-toggle" onclick="toggleSidebar()">
+                <i class="bi bi-list"></i>
+            </button>
+            <div class="d-flex flex-column">
+                <span style="font-size: 1.1rem; line-height: 1.2">Inventory Report</span>
+                <small style="font-size: .7rem">Current Stock Overview</small>
+            </div>
         </div>
         <div class="d-flex gap-2">
             <a href="<?= base_url('reports/sales') ?>" class="btn btn-light btn-sm">

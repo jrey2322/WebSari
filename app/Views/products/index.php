@@ -4,13 +4,14 @@
 
 <div class="ws-main">
     <header class="ws-topbar">
-        <button class="btn btn-sm btn-light d-lg-none me-2"
-                onclick="document.getElementById('wsSidebar').classList.toggle('show')">
-            <i class="bi bi-list fs-5"></i>
-        </button>
         <div class="page-title">
-            Products
-            <small><?= count($products) ?> active items</small>
+            <button class="mobile-toggle" onclick="toggleSidebar()">
+                <i class="bi bi-list"></i>
+            </button>
+            <div class="d-flex flex-column">
+                <span style="font-size: 1.1rem; line-height: 1.2">Products</span>
+                <small style="font-size: .7rem"><?= count($products) ?> active items</small>
+            </div>
         </div>
         <?php if (session()->get('user_role') === 'owner'): ?>
             <a href="<?= base_url('products/create') ?>"

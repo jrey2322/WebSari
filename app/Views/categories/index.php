@@ -4,12 +4,18 @@
 
 <div class="ws-main">
     <header class="ws-topbar">
-        <div class="page-title">Categories
-            <small><?= count($categories) ?> total</small>
+        <div class="page-title">
+            <button class="mobile-toggle" onclick="toggleSidebar()">
+                <i class="bi bi-list"></i>
+            </button>
+            <div class="d-flex flex-column">
+                <span style="font-size: 1.1rem; line-height: 1.2">Categories</span>
+                <small style="font-size: .7rem"><?= count($categories) ?> total</small>
+            </div>
         </div>
         <button class="btn btn-primary btn-sm"
                 data-bs-toggle="modal" data-bs-target="#addCatModal">
-            <i class="bi bi-plus-lg me-1"></i>Add Category
+            <i class="bi bi-plus-lg d-none d-sm-inline"></i> Add <span class="d-none d-sm-inline">Category</span>
         </button>
     </header>
 

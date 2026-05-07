@@ -5,8 +5,13 @@
 <div class="ws-main">
     <header class="ws-topbar">
         <div class="page-title">
-            Sales Report
-            <small><?= date('M j',strtotime($from)).' – '.date('M j, Y',strtotime($to)) ?></small>
+            <button class="mobile-toggle" onclick="toggleSidebar()">
+                <i class="bi bi-list"></i>
+            </button>
+            <div class="d-flex flex-column">
+                <span style="font-size: 1.1rem; line-height: 1.2">Sales Report</span>
+                <small style="font-size: .7rem"><?= date('M j',strtotime($from)).' – '.date('M j, Y',strtotime($to)) ?></small>
+            </div>
         </div>
         <div class="d-flex gap-2">
             <a href="<?= base_url('reports/inventory') ?>" class="btn btn-light btn-sm">

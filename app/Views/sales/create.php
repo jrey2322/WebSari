@@ -108,23 +108,53 @@
     color:#475569; transition:all .2s;
 }
 .pay-opt.on { border-color:#2563eb; background:#eff6ff; color:#1d4ed8; }
+    /* ── MOBILE POS ──────────────────────────── */
+    @media (max-width: 991.98px) {
+        .pos-wrap {
+            flex-direction: column;
+            height: auto;
+            overflow: visible;
+        }
+        .pos-left {
+            height: auto;
+            overflow: visible;
+            padding: 12px;
+        }
+        .pos-right {
+            width: 100%;
+            border-left: none;
+            border-top: 1px solid #e2e8f0;
+            height: auto;
+            overflow: visible;
+        }
+        .cart-body {
+            max-height: 400px;
+        }
+        .ws-main { padding-bottom: 20px; }
+    }
 </style>
 
 <div class="ws-main" style="margin-left:var(--sidebar-w)">
 
     <header class="ws-topbar">
         <div class="page-title">
-            🛒 Point of Sale
-            <small>WebSari</small>
+            <button class="mobile-toggle" onclick="toggleSidebar()">
+                <i class="bi bi-list"></i>
+            </button>
+            <div class="d-flex flex-column">
+                <span style="font-size: 1.1rem; line-height: 1.2">🛒 Point of Sale</span>
+                <small style="font-size: .7rem">WebSari</small>
+            </div>
         </div>
         <div class="d-flex gap-2 align-items-center">
             <input type="text" id="srch"
-                   class="form-control form-control-sm"
+                   class="form-control form-control-sm d-none d-sm-block"
                    style="width:200px"
                    placeholder="Search product...">
             <a href="<?= base_url('sales') ?>"
                class="btn btn-light btn-sm">
-                ← Back
+                <span class="d-none d-sm-inline">← Back</span>
+                <i class="bi bi-arrow-left d-sm-none"></i>
             </a>
         </div>
     </header>

@@ -4,8 +4,13 @@
 <div class="ws-main">
     <header class="ws-topbar">
         <div class="page-title">
-            Activity Log
-            <small>System-wide user actions and events</small>
+            <button class="mobile-toggle" onclick="toggleSidebar()">
+                <i class="bi bi-list"></i>
+            </button>
+            <div class="d-flex flex-column">
+                <span style="font-size: 1.1rem; line-height: 1.2">Activity Log</span>
+                <small style="font-size: .7rem">System-wide user actions and events</small>
+            </div>
         </div>
     </header>
 

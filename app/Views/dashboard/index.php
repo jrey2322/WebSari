@@ -6,13 +6,14 @@
 
     <!-- Topbar -->
     <header class="ws-topbar">
-        <button class="btn btn-sm btn-light d-lg-none me-2"
-                onclick="document.getElementById('wsSidebar').classList.toggle('show')">
-            <i class="bi bi-list fs-5"></i>
-        </button>
         <div class="page-title">
-            Dashboard
-            <small><?= date('l, F j, Y') ?></small>
+            <button class="mobile-toggle" onclick="toggleSidebar()">
+                <i class="bi bi-list"></i>
+            </button>
+            <div class="d-flex flex-column">
+                <span style="font-size: 1.1rem; line-height: 1.2">Dashboard</span>
+                <small style="font-size: .7rem"><?= date('l, F j, Y') ?></small>
+            </div>
         </div>
         <div class="d-flex align-items-center gap-2">
             <span class="badge <?= session()->get('user_role') === 'owner' ? 'role-owner' : 'role-staff' ?>">

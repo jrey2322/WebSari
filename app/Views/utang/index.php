@@ -5,8 +5,13 @@
 <div class="ws-main">
     <header class="ws-topbar">
         <div class="page-title">
-            📝 Utang Tracker
-            <small>Track customer debts</small>
+            <button class="mobile-toggle" onclick="toggleSidebar()">
+                <i class="bi bi-list"></i>
+            </button>
+            <div class="d-flex flex-column">
+                <span style="font-size: 1.1rem; line-height: 1.2">📝 Utang Tracker</span>
+                <small style="font-size: .7rem">Track customer debts</small>
+            </div>
         </div>
     </header>
 
