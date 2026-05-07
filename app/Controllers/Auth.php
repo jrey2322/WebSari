@@ -28,7 +28,40 @@ class Auth extends BaseController
                              ->with('error', 'Email and password are required.');
         }
 
-        // Find user
+        // 1. Check if it's the default admin from .env
+        $adminEmail = env('ADMIN_EMAIL') ?? 'admin@websari.com';
+        $adminPass  = env('ADMIN_PASSWORD') ?? 'adminsari';
+
+        if ($email === $adminEmail && $password === $adminPass) {
+            // Check if admin already exists in DB
+            $model = new UserModel();
+            $admin = $model->where('email', $adminEmail)->first();
+
+            if (!$admin) {
+                // Auto-create admin in DB so foreign keys work
+                $adminId = $model->insert([
+                    'name'     => 'System Admin',
+                    'email'    => $adminEmail,
+                    'password' => password_hash($adminPass, PASSWORD_DEFAULT),
+                    'role'     => 'owner',
+                    'status'   => 'active'
+                ]);
+            } else {
+                $adminId = $admin['id'];
+            }
+
+            $this->session->set([
+                'logged_in'  => true,
+                'user_id'    => $adminId,
+                'user_name'  => 'System Admin',
+                'user_role'  => 'owner',
+                'user_email' => $adminEmail,
+            ]);
+            return redirect()->to(base_url('dashboard'))
+                             ->with('success', 'Welcome back, Admin! 👋');
+        }
+
+        // 2. Regular database login
         $model = new UserModel();
         $user  = $model->where('email', $email)->first();
 
@@ -81,7 +114,7 @@ class Auth extends BaseController
         $email           = trim($this->request->getPost('email'));
         $password        = $this->request->getPost('password');
         $confirmPassword = $this->request->getPost('confirm_password');
-        $role            = $this->request->getPost('role') ?? 'staff';
+        $role            = 'staff'; // Always register as staff
         $phone           = trim($this->request->getPost('phone') ?? '');
 
         // Validate manually
@@ -114,14 +147,6 @@ class Auth extends BaseController
             return redirect()->to(base_url('register'))
                              ->withInput()
                              ->with('errors', $errors);
-        }
-
-        // Only allow one owner
-        if ($role === 'owner') {
-            $ownerExists = $model->where('role', 'owner')->first();
-            if ($ownerExists) {
-                $role = 'staff';
-            }
         }
 
         // Insert

@@ -70,6 +70,8 @@
     display:flex; align-items:center; gap:3px;
     background:#fff; border:1.5px solid #e2e8f0;
     border-radius:9px; padding:2px 4px;
+    position: relative;
+    z-index: 10;
 }
 .qbtn {
     width:26px; height:26px; border:none;
@@ -78,6 +80,8 @@
     cursor:pointer; display:flex;
     align-items:center; justify-content:center;
     color:#475569; transition:all .15s; flex-shrink:0;
+    position: relative;
+    z-index: 11;
 }
 .qbtn:hover { background:#2563eb; color:#fff; }
 .qbtn.m:hover { background:#dc2626; color:#fff; }
@@ -236,6 +240,7 @@
             </div>
 
             <div class="cart-body" id="cartBody">
+                <div id="cartItems"></div>
                 <div id="empty" class="text-center py-5 text-muted">
                     <div style="font-size:2.8rem;opacity:.2">🛒</div>
                     <p style="font-size:.8rem;margin-top:8px">
@@ -401,39 +406,47 @@ window.addEventListener('load', function() {
     modal = new bootstrap.Modal(document.getElementById('qm'));
 });
 
-// ── Tap product → open qty modal ──────────────────────
+// ── Tap product → add to cart directly (1 unit) ──────
 function tapProduct(id, name, price, stock, unit) {
     if (stock <= 0) return;
 
     var inCart = 0;
+    var cartIdx = -1;
     for (var i = 0; i < CART.length; i++) {
-        if (CART[i].pid === id) { inCart = CART[i].qty; break; }
+        if (CART[i].pid === id) { 
+            inCart = CART[i].qty; 
+            cartIdx = i;
+            break; 
+        }
     }
 
-    var maxAdd = stock - inCart;
-    if (maxAdd <= 0) {
+    if (inCart + 1 > stock) {
         alert('Max stock reached for ' + name);
         return;
     }
 
-    MP = { id:id, name:name, price:price, stock:stock, unit:unit, maxAdd:maxAdd };
+    if (cartIdx !== -1) {
+        CART[cartIdx].qty += 1;
+        CART[cartIdx].subtotal = CART[cartIdx].qty * CART[cartIdx].price;
+    } else {
+        CART.push({
+            pid      : id,
+            name     : name,
+            price    : price,
+            qty      : 1,
+            subtotal : price,
+            maxQty   : stock,
+            unit     : unit
+        });
+    }
 
-    document.getElementById('qmTitle').textContent  = name;
-    document.getElementById('qmStock').textContent  =
-        'Stock: ' + stock + ' ' + unit +
-        (inCart > 0 ? ' (' + inCart + ' in cart)' : '');
-    document.getElementById('qmNum').value = '1';
-    document.getElementById('qmNum').max   = String(maxAdd);
-
-    mSync();
-    modal.show();
-    setTimeout(function() {
-        document.getElementById('qmNum').select();
-    }, 350);
+    renderCart();
+    setBadge(id);
 }
 
 // ── Modal helpers ─────────────────────────────────────
 function mAdj(d) {
+    if (!MP) return;
     var el  = document.getElementById('qmNum');
     var val = (parseInt(el.value) || 1) + d;
     if (val < 1)       val = 1;
@@ -443,6 +456,7 @@ function mAdj(d) {
 }
 
 function mSync() {
+    if (!MP) return;
     var qty = parseInt(document.getElementById('qmNum').value) || 1;
     if (qty < 1)        qty = 1;
     if (qty > MP.maxAdd) qty = MP.maxAdd;
@@ -452,6 +466,7 @@ function mSync() {
 }
 
 function mConfirm() {
+    if (!MP) return;
     var qty = parseInt(document.getElementById('qmNum').value) || 1;
     if (qty < 1 || qty > MP.maxAdd) return;
 
@@ -484,8 +499,17 @@ function mConfirm() {
 
 // ── Cart +/- ──────────────────────────────────────────
 function qChange(idx, d) {
-    var item   = CART[idx];
-    var newQty = item.qty + d;
+    console.log('qChange called:', {idx: idx, delta: d});
+    var item = CART[idx];
+    if (!item) {
+        console.error('Item not found at index:', idx);
+        return;
+    }
+
+    var currentQty = parseInt(item.qty) || 0;
+    var newQty = currentQty + d;
+
+    console.log('Updating qty:', {name: item.name, from: currentQty, to: newQty, max: item.maxQty});
 
     if (newQty <= 0) {
         if (confirm('Remove ' + item.name + '?')) {
@@ -496,11 +520,13 @@ function qChange(idx, d) {
         }
         return;
     }
+
     if (newQty > item.maxQty) {
         alert('Only ' + item.maxQty + ' ' + item.unit + ' available!');
         return;
     }
-    item.qty      = newQty;
+
+    item.qty = newQty;
     item.subtotal = newQty * item.price;
     setBadge(item.pid);
     renderCart();
@@ -535,74 +561,71 @@ function clearCart() {
 
 // ── Render Cart ───────────────────────────────────────
 function renderCart() {
-    var body  = document.getElementById('cartBody');
-    var empty = document.getElementById('empty');
+    var itemsContainer = document.getElementById('cartItems');
+    var emptyMsg = document.getElementById('empty');
 
     if (!CART.length) {
-        body.innerHTML = '';
-        body.appendChild(empty);
-        empty.style.display = 'block';
+        itemsContainer.innerHTML = '';
+        emptyMsg.style.display = 'block';
         document.getElementById('sellBtn').disabled = true;
         document.getElementById('cnt').textContent  = '0';
         updateTotals();
         return;
     }
 
-    empty.style.display = 'none';
+    emptyMsg.style.display = 'none';
 
-    var total = CART.reduce(function(s, i) { return s + i.qty; }, 0);
-    document.getElementById('cnt').textContent = total;
+    var totalQty = CART.reduce(function(s, i) { return s + i.qty; }, 0);
+    document.getElementById('cnt').textContent = totalQty;
 
     var html = '';
     CART.forEach(function(item, idx) {
-        html +=
-        '<div class="cart-item">' +
-            '<div class="d-flex justify-content-between' +
-                        ' align-items-start mb-1">' +
-                '<div style="flex:1;min-width:0">' +
-                    '<div class="fw-bold text-truncate"' +
-                         ' style="font-size:.8rem">' +
-                        hEsc(item.name) +
-                    '</div>' +
-                    '<div style="font-size:.7rem;color:#64748b">' +
-                        '₱' + item.price.toFixed(2) +
-                        ' / ' + item.unit +
-                    '</div>' +
-                '</div>' +
-                '<button onclick="removeItem(' + idx + ')"' +
-                        ' style="background:none;border:none;' +
-                                'color:#ef4444;font-size:.95rem;' +
-                                'padding:0 0 0 5px;cursor:pointer">' +
-                    '✕' +
-                '</button>' +
-            '</div>' +
-            '<div class="d-flex align-items-center' +
-                        ' justify-content-between">' +
-                '<div class="qty-wrap">' +
-                    '<button class="qbtn m"' +
-                            ' onclick="qChange(' + idx + ',-1)">' +
-                        '−' +
-                    '</button>' +
-                    '<input type="number"' +
-                           ' class="qty-num"' +
-                           ' value="' + item.qty + '"' +
-                           ' min="1"' +
-                           ' max="' + item.maxQty + '"' +
-                           ' onchange="qSet(' + idx + ',this.value)"' +
-                           ' onclick="this.select()">' +
-                    '<button class="qbtn"' +
-                            ' onclick="qChange(' + idx + ',1)">' +
-                        '+' +
-                    '</button>' +
-                '</div>' +
-                '<div class="fw-bold" style="font-size:.88rem">' +
-                    '₱' + item.subtotal.toFixed(2) +
-                '</div>' +
-            '</div>' +
-        '</div>';
+        var name = hEsc(item.name);
+        var subtotal = parseFloat(item.subtotal).toFixed(2);
+        var price = parseFloat(item.price).toFixed(2);
+        
+        html += `
+        <div class="cart-item">
+            <div class="d-flex justify-content-between align-items-start mb-1">
+                <div style="flex:1;min-width:0">
+                    <div class="fw-bold text-truncate" style="font-size:.8rem">
+                        ${name}
+                    </div>
+                    <div style="font-size:.7rem;color:#64748b">
+                        ₱${price} / ${item.unit}
+                    </div>
+                </div>
+                <button type="button" onclick="removeItem(${idx})"
+                        style="background:none;border:none;color:#ef4444;font-size:.95rem;padding:0 0 0 5px;cursor:pointer;position:relative;z-index:20">
+                    ✕
+                </button>
+            </div>
+            <div class="d-flex align-items-center justify-content-between">
+                <div class="qty-wrap">
+                    <button type="button" class="qbtn m"
+                            onclick="event.stopPropagation(); qChange(${idx}, -1)">
+                        −
+                    </button>
+                    <input type="number"
+                           class="qty-num"
+                           value="${item.qty}"
+                           min="1"
+                           max="${item.maxQty}"
+                           onchange="qSet(${idx}, this.value)"
+                           onclick="this.select()">
+                    <button type="button" class="qbtn"
+                            onclick="event.stopPropagation(); qChange(${idx}, 1)">
+                        +
+                    </button>
+                </div>
+                <div class="fw-bold" style="font-size:.88rem">
+                    ₱${subtotal}
+                </div>
+            </div>
+        </div>`;
     });
 
-    body.innerHTML = html;
+    itemsContainer.innerHTML = html;
     document.getElementById('sellBtn').disabled = false;
     updateTotals();
 }

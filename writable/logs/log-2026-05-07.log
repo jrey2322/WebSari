@@ -440,3 +440,316 @@ DEBUG - 2026-05-07 03:56:47 --> Session: Class initialized using 'CodeIgniter\Se
 DEBUG - 2026-05-07 03:56:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2026-05-07 03:56:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2026-05-07 03:57:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:03:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:03:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:03:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:03:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:03:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:10:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:11:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:11:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:11:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:11:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:11:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:11:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:11:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:11:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:11:43 --> Sales::store - raw items: [{"product_id":1,"qty":4,"price":18,"subtotal":72}]
+DEBUG - 2026-05-07 04:11:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:11:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:11:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:12:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:12:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:12:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:12:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:12:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:12:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:13:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:13:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:14:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:14:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:14:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:14:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:14:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:15:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:15:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:15:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:15:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:15:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-07 04:15:20 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "reports/inventory.php"
+[Method: GET, Route: reports/inventory]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('reports/inventory.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('reports/inventory', [], true)
+ 3 APPPATH\Controllers\Reports.php(59): view('reports/inventory', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reports->inventory()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reports))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('D:\\xampp\\htdocs\\WebSari\\codeigniter4-framework-b3359be\\public\\index.php')
+DEBUG - 2026-05-07 04:15:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:15:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:15:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:15:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:15:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:15:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:15:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-07 04:15:42 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "reports/inventory.php"
+[Method: GET, Route: reports/inventory]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(228): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('reports/inventory.php')
+ 2 SYSTEMPATH\Common.php(1250): CodeIgniter\View\View->render('reports/inventory', [], true)
+ 3 APPPATH\Controllers\Reports.php(59): view('reports/inventory', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Reports->inventory()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reports))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('D:\\xampp\\htdocs\\WebSari\\codeigniter4-framework-b3359be\\public\\index.php')
+DEBUG - 2026-05-07 04:18:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:18:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:18:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:19:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:19:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:19:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:19:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:19:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:19:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:19:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:20:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:20:06 --> Sales::store - raw items: [{"product_id":8,"qty":11,"price":38,"subtotal":418}]
+ERROR - 2026-05-07 04:20:06 --> Cannot add or update a child row: a foreign key constraint fails (`websari`.`sales`, CONSTRAINT `sales_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `sales` (`invoice_no`, `user_id`, `customer_name`, `subtotal`, `discount`, `total`, `amount_paid`, `change_amount`, `payment_method`, `status`, `notes`, `created_at`, `updated_at`) VALUES (\'WS-20260507-0006\', 0, \'Walk-in Customer\', 418, 0, 418, 500, 82, \'cash\', \'completed\', \'\', \'2026-05-07 04:20:06\', \'2026-05-07 04:20:06\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sales` (`invoice_no`, `user_id`, `customer_name`, `subtotal`, `discount`, `total`, `amount_paid`, `change_amount`, `payment_method`, `status`, `notes`, `created_at`, `updated_at`) VALUES (\'WS-20260507-0006\', 0, \'Walk-in Customer\', 418, 0, 418, 500, 82, \'cash\', \'completed\', \'\', \'2026-05-07 04:20:06\', \'2026-05-07 04:20:06\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sales` (`invoice_no`, `user_id`, `customer_name`, `subtotal`, `discount`, `total`, `amount_paid`, `change_amount`, `payment_method`, `status`, `notes`, `created_at`, `updated_at`) VALUES (\'WS-20260507-0006\', 0, \'Walk-in Customer\', 418, 0, 418, 500, 82, \'cash\', \'completed\', \'\', \'2026-05-07 04:20:06\', \'2026-05-07 04:20:06\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sales` (`invoice_no`, `user_id`, `customer_name`, `subtotal`, `discount`, `total`, `amount_paid`, `change_amount`, `payment_method`, `status`, `notes`, `created_at`, `updated_at`) VALUES (:invoice_no:, :user_id:, :customer_name:, :subtotal:, :discount:, :total:, :amount_paid:, :change_amount:, :payment_method:, :status:, :notes:, :created_at:, :updated_at:)', [...], false)
+ 5 SYSTEMPATH\Model.php(355): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(899): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(668): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Sales.php(121): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sales->store()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sales))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('D:\\xampp\\htdocs\\WebSari\\codeigniter4-framework-b3359be\\public\\index.php')
+ERROR - 2026-05-07 04:20:06 --> Sales::store error: Failed to create sale record.
+DEBUG - 2026-05-07 04:20:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:20:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:20:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:20:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:20:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:20:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:20:34 --> Sales::store - raw items: [{"product_id":8,"qty":10,"price":38,"subtotal":380}]
+ERROR - 2026-05-07 04:20:34 --> Cannot add or update a child row: a foreign key constraint fails (`websari`.`sales`, CONSTRAINT `sales_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `sales` (`invoice_no`, `user_id`, `customer_name`, `subtotal`, `discount`, `total`, `amount_paid`, `change_amount`, `payment_method`, `status`, `notes`, `created_at`, `updated_at`) VALUES (\'WS-20260507-0006\', 0, \'Walk-in Customer\', 380, 0, 380, 500, 120, \'cash\', \'completed\', \'\', \'2026-05-07 04:20:34\', \'2026-05-07 04:20:34\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sales` (`invoice_no`, `user_id`, `customer_name`, `subtotal`, `discount`, `total`, `amount_paid`, `change_amount`, `payment_method`, `status`, `notes`, `created_at`, `updated_at`) VALUES (\'WS-20260507-0006\', 0, \'Walk-in Customer\', 380, 0, 380, 500, 120, \'cash\', \'completed\', \'\', \'2026-05-07 04:20:34\', \'2026-05-07 04:20:34\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sales` (`invoice_no`, `user_id`, `customer_name`, `subtotal`, `discount`, `total`, `amount_paid`, `change_amount`, `payment_method`, `status`, `notes`, `created_at`, `updated_at`) VALUES (\'WS-20260507-0006\', 0, \'Walk-in Customer\', 380, 0, 380, 500, 120, \'cash\', \'completed\', \'\', \'2026-05-07 04:20:34\', \'2026-05-07 04:20:34\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sales` (`invoice_no`, `user_id`, `customer_name`, `subtotal`, `discount`, `total`, `amount_paid`, `change_amount`, `payment_method`, `status`, `notes`, `created_at`, `updated_at`) VALUES (:invoice_no:, :user_id:, :customer_name:, :subtotal:, :discount:, :total:, :amount_paid:, :change_amount:, :payment_method:, :status:, :notes:, :created_at:, :updated_at:)', [...], false)
+ 5 SYSTEMPATH\Model.php(355): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(899): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(668): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Sales.php(121): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sales->store()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sales))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('D:\\xampp\\htdocs\\WebSari\\codeigniter4-framework-b3359be\\public\\index.php')
+ERROR - 2026-05-07 04:20:34 --> Sales::store error: Failed to create sale record.
+DEBUG - 2026-05-07 04:20:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:20:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:20:55 --> Sales::store - raw items: [{"product_id":8,"qty":4,"price":38,"subtotal":152}]
+ERROR - 2026-05-07 04:20:55 --> Cannot add or update a child row: a foreign key constraint fails (`websari`.`sales`, CONSTRAINT `sales_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `sales` (`invoice_no`, `user_id`, `customer_name`, `subtotal`, `discount`, `total`, `amount_paid`, `change_amount`, `payment_method`, `status`, `notes`, `created_at`, `updated_at`) VALUES (\'WS-20260507-0006\', 0, \'Walk-in Customer\', 152, 0, 152, 500, 348, \'cash\', \'completed\', \'\', \'2026-05-07 04:20:55\', \'2026-05-07 04:20:55\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sales` (`invoice_no`, `user_id`, `customer_name`, `subtotal`, `discount`, `total`, `amount_paid`, `change_amount`, `payment_method`, `status`, `notes`, `created_at`, `updated_at`) VALUES (\'WS-20260507-0006\', 0, \'Walk-in Customer\', 152, 0, 152, 500, 348, \'cash\', \'completed\', \'\', \'2026-05-07 04:20:55\', \'2026-05-07 04:20:55\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sales` (`invoice_no`, `user_id`, `customer_name`, `subtotal`, `discount`, `total`, `amount_paid`, `change_amount`, `payment_method`, `status`, `notes`, `created_at`, `updated_at`) VALUES (\'WS-20260507-0006\', 0, \'Walk-in Customer\', 152, 0, 152, 500, 348, \'cash\', \'completed\', \'\', \'2026-05-07 04:20:55\', \'2026-05-07 04:20:55\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sales` (`invoice_no`, `user_id`, `customer_name`, `subtotal`, `discount`, `total`, `amount_paid`, `change_amount`, `payment_method`, `status`, `notes`, `created_at`, `updated_at`) VALUES (:invoice_no:, :user_id:, :customer_name:, :subtotal:, :discount:, :total:, :amount_paid:, :change_amount:, :payment_method:, :status:, :notes:, :created_at:, :updated_at:)', [...], false)
+ 5 SYSTEMPATH\Model.php(355): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(899): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(668): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Sales.php(121): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sales->store()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sales))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('D:\\xampp\\htdocs\\WebSari\\codeigniter4-framework-b3359be\\public\\index.php')
+ERROR - 2026-05-07 04:20:55 --> Sales::store error: Failed to create sale record.
+DEBUG - 2026-05-07 04:20:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:21:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:21:06 --> Sales::store - raw items: [{"product_id":8,"qty":3,"price":38,"subtotal":114}]
+ERROR - 2026-05-07 04:21:06 --> Cannot add or update a child row: a foreign key constraint fails (`websari`.`sales`, CONSTRAINT `sales_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `sales` (`invoice_no`, `user_id`, `customer_name`, `subtotal`, `discount`, `total`, `amount_paid`, `change_amount`, `payment_method`, `status`, `notes`, `created_at`, `updated_at`) VALUES (\'WS-20260507-0006\', 0, \'Walk-in Customer\', 114, 0, 114, 0, 0, \'gcash\', \'completed\', \'\', \'2026-05-07 04:21:06\', \'2026-05-07 04:21:06\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sales` (`invoice_no`, `user_id`, `customer_name`, `subtotal`, `discount`, `total`, `amount_paid`, `change_amount`, `payment_method`, `status`, `notes`, `created_at`, `updated_at`) VALUES (\'WS-20260507-0006\', 0, \'Walk-in Customer\', 114, 0, 114, 0, 0, \'gcash\', \'completed\', \'\', \'2026-05-07 04:21:06\', \'2026-05-07 04:21:06\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sales` (`invoice_no`, `user_id`, `customer_name`, `subtotal`, `discount`, `total`, `amount_paid`, `change_amount`, `payment_method`, `status`, `notes`, `created_at`, `updated_at`) VALUES (\'WS-20260507-0006\', 0, \'Walk-in Customer\', 114, 0, 114, 0, 0, \'gcash\', \'completed\', \'\', \'2026-05-07 04:21:06\', \'2026-05-07 04:21:06\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sales` (`invoice_no`, `user_id`, `customer_name`, `subtotal`, `discount`, `total`, `amount_paid`, `change_amount`, `payment_method`, `status`, `notes`, `created_at`, `updated_at`) VALUES (:invoice_no:, :user_id:, :customer_name:, :subtotal:, :discount:, :total:, :amount_paid:, :change_amount:, :payment_method:, :status:, :notes:, :created_at:, :updated_at:)', [...], false)
+ 5 SYSTEMPATH\Model.php(355): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(899): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(668): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Sales.php(121): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sales->store()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sales))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('D:\\xampp\\htdocs\\WebSari\\codeigniter4-framework-b3359be\\public\\index.php')
+ERROR - 2026-05-07 04:21:06 --> Sales::store error: Failed to create sale record.
+DEBUG - 2026-05-07 04:21:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:21:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:21:23 --> Sales::store - raw items: [{"product_id":8,"qty":4,"price":38,"subtotal":152}]
+ERROR - 2026-05-07 04:21:23 --> Cannot add or update a child row: a foreign key constraint fails (`websari`.`sales`, CONSTRAINT `sales_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `sales` (`invoice_no`, `user_id`, `customer_name`, `subtotal`, `discount`, `total`, `amount_paid`, `change_amount`, `payment_method`, `status`, `notes`, `created_at`, `updated_at`) VALUES (\'WS-20260507-0006\', 0, \'Oscar\', 152, 0, 152, 500, 348, \'gcash\', \'completed\', \'\', \'2026-05-07 04:21:23\', \'2026-05-07 04:21:23\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sales` (`invoice_no`, `user_id`, `customer_name`, `subtotal`, `discount`, `total`, `amount_paid`, `change_amount`, `payment_method`, `status`, `notes`, `created_at`, `updated_at`) VALUES (\'WS-20260507-0006\', 0, \'Oscar\', 152, 0, 152, 500, 348, \'gcash\', \'completed\', \'\', \'2026-05-07 04:21:23\', \'2026-05-07 04:21:23\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sales` (`invoice_no`, `user_id`, `customer_name`, `subtotal`, `discount`, `total`, `amount_paid`, `change_amount`, `payment_method`, `status`, `notes`, `created_at`, `updated_at`) VALUES (\'WS-20260507-0006\', 0, \'Oscar\', 152, 0, 152, 500, 348, \'gcash\', \'completed\', \'\', \'2026-05-07 04:21:23\', \'2026-05-07 04:21:23\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sales` (`invoice_no`, `user_id`, `customer_name`, `subtotal`, `discount`, `total`, `amount_paid`, `change_amount`, `payment_method`, `status`, `notes`, `created_at`, `updated_at`) VALUES (:invoice_no:, :user_id:, :customer_name:, :subtotal:, :discount:, :total:, :amount_paid:, :change_amount:, :payment_method:, :status:, :notes:, :created_at:, :updated_at:)', [...], false)
+ 5 SYSTEMPATH\Model.php(355): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(899): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(668): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Sales.php(121): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sales->store()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sales))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('D:\\xampp\\htdocs\\WebSari\\codeigniter4-framework-b3359be\\public\\index.php')
+ERROR - 2026-05-07 04:21:23 --> Sales::store error: Failed to create sale record.
+DEBUG - 2026-05-07 04:21:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:21:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:21:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:21:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:21:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:21:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:21:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:22:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:22:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:22:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:22:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:22:29 --> Sales::store - raw items: [{"product_id":8,"qty":3,"price":38,"subtotal":114}]
+ERROR - 2026-05-07 04:22:29 --> Cannot add or update a child row: a foreign key constraint fails (`websari`.`sales`, CONSTRAINT `sales_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `sales` (`invoice_no`, `user_id`, `customer_name`, `subtotal`, `discount`, `total`, `amount_paid`, `change_amount`, `payment_method`, `status`, `notes`, `created_at`, `updated_at`) VALUES (\'WS-20260507-0006\', 0, \'Walk-in Customer\', 114, 0, 114, 500, 386, \'cash\', \'completed\', \'\', \'2026-05-07 04:22:29\', \'2026-05-07 04:22:29\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sales` (`invoice_no`, `user_id`, `customer_name`, `subtotal`, `discount`, `total`, `amount_paid`, `change_amount`, `payment_method`, `status`, `notes`, `created_at`, `updated_at`) VALUES (\'WS-20260507-0006\', 0, \'Walk-in Customer\', 114, 0, 114, 500, 386, \'cash\', \'completed\', \'\', \'2026-05-07 04:22:29\', \'2026-05-07 04:22:29\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sales` (`invoice_no`, `user_id`, `customer_name`, `subtotal`, `discount`, `total`, `amount_paid`, `change_amount`, `payment_method`, `status`, `notes`, `created_at`, `updated_at`) VALUES (\'WS-20260507-0006\', 0, \'Walk-in Customer\', 114, 0, 114, 500, 386, \'cash\', \'completed\', \'\', \'2026-05-07 04:22:29\', \'2026-05-07 04:22:29\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sales` (`invoice_no`, `user_id`, `customer_name`, `subtotal`, `discount`, `total`, `amount_paid`, `change_amount`, `payment_method`, `status`, `notes`, `created_at`, `updated_at`) VALUES (:invoice_no:, :user_id:, :customer_name:, :subtotal:, :discount:, :total:, :amount_paid:, :change_amount:, :payment_method:, :status:, :notes:, :created_at:, :updated_at:)', [...], false)
+ 5 SYSTEMPATH\Model.php(355): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(899): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(668): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Sales.php(121): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sales->store()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sales))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('D:\\xampp\\htdocs\\WebSari\\codeigniter4-framework-b3359be\\public\\index.php')
+ERROR - 2026-05-07 04:22:29 --> Sales::store error: Failed to create sale record.
+DEBUG - 2026-05-07 04:22:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:23:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:23:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:23:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:26:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:26:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:26:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:26:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:26:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:26:38 --> Sales::store - raw items: [{"product_id":15,"qty":4,"price":20,"subtotal":80}]
+ERROR - 2026-05-07 04:26:38 --> Cannot add or update a child row: a foreign key constraint fails (`websari`.`sales`, CONSTRAINT `sales_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 300.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(300): mysqli->query('INSERT INTO `sales` (`invoice_no`, `user_id`, `customer_name`, `subtotal`, `discount`, `total`, `amount_paid`, `change_amount`, `payment_method`, `status`, `notes`, `created_at`, `updated_at`) VALUES (\'WS-20260507-0006\', 0, \'Walk-in Customer\', 80, 0, 80, 500, 420, \'cash\', \'completed\', \'\', \'2026-05-07 04:26:38\', \'2026-05-07 04:26:38\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(910): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `sales` (`invoice_no`, `user_id`, `customer_name`, `subtotal`, `discount`, `total`, `amount_paid`, `change_amount`, `payment_method`, `status`, `notes`, `created_at`, `updated_at`) VALUES (\'WS-20260507-0006\', 0, \'Walk-in Customer\', 80, 0, 80, 500, 420, \'cash\', \'completed\', \'\', \'2026-05-07 04:26:38\', \'2026-05-07 04:26:38\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(827): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `sales` (`invoice_no`, `user_id`, `customer_name`, `subtotal`, `discount`, `total`, `amount_paid`, `change_amount`, `payment_method`, `status`, `notes`, `created_at`, `updated_at`) VALUES (\'WS-20260507-0006\', 0, \'Walk-in Customer\', 80, 0, 80, 500, 420, \'cash\', \'completed\', \'\', \'2026-05-07 04:26:38\', \'2026-05-07 04:26:38\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `sales` (`invoice_no`, `user_id`, `customer_name`, `subtotal`, `discount`, `total`, `amount_paid`, `change_amount`, `payment_method`, `status`, `notes`, `created_at`, `updated_at`) VALUES (:invoice_no:, :user_id:, :customer_name:, :subtotal:, :discount:, :total:, :amount_paid:, :change_amount:, :payment_method:, :status:, :notes:, :created_at:, :updated_at:)', [...], false)
+ 5 SYSTEMPATH\Model.php(355): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(899): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(668): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Sales.php(121): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Sales->store()
+10 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Sales))
+11 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+15 SYSTEMPATH\rewrite.php(44): require_once('D:\\xampp\\htdocs\\WebSari\\codeigniter4-framework-b3359be\\public\\index.php')
+ERROR - 2026-05-07 04:26:38 --> Sales::store error: Failed to create sale record.
+DEBUG - 2026-05-07 04:26:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:26:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:26:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:27:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:27:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:27:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:27:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:27:15 --> Sales::store - raw items: [{"product_id":15,"qty":4,"price":20,"subtotal":80}]
+DEBUG - 2026-05-07 04:27:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:27:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:27:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:29:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:30:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:30:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:30:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:30:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:31:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:31:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:31:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:32:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:32:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:34:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:35:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:38:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:38:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:38:21 --> Sales::store - raw items: [{"product_id":1,"qty":3,"price":18,"subtotal":54}]
+DEBUG - 2026-05-07 04:38:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:38:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:38:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:38:34 --> Sales::store - raw items: [{"product_id":1,"qty":4,"price":18,"subtotal":72}]
+DEBUG - 2026-05-07 04:38:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:38:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:39:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:39:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:40:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:40:05 --> Sales::store - raw items: [{"product_id":1,"qty":1,"price":18,"subtotal":18}]
+DEBUG - 2026-05-07 04:40:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:40:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:40:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:42:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:45:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:45:31 --> Sales::store - raw items: [{"product_id":1,"qty":3,"price":18,"subtotal":54},{"product_id":9,"qty":5,"price":22,"subtotal":110},{"product_id":11,"qty":2,"price":10,"subtotal":20},{"product_id":12,"qty":3,"price":160,"subtotal":480},{"product_id":13,"qty":1,"price":65,"subtotal":65},{"product_id":4,"qty":1,"price":22,"subtotal":22},{"product_id":10,"qty":1,"price":15,"subtotal":15},{"product_id":6,"qty":2,"price":15,"subtotal":30},{"product_id":3,"qty":4,"price":12,"subtotal":48},{"product_id":15,"qty":3,"price":20,"subtotal":60},{"product_id":8,"qty":3,"price":38,"subtotal":114},{"product_id":7,"qty":1,"price":10,"subtotal":10},{"product_id":2,"qty":1,"price":28,"subtotal":28},{"product_id":5,"qty":3,"price":20,"subtotal":60}]
+DEBUG - 2026-05-07 04:45:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:45:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:45:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:45:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:45:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:45:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:45:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:45:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:46:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:46:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:46:15 --> Sales::store - raw items: [{"product_id":1,"qty":3,"price":18,"subtotal":54}]
+DEBUG - 2026-05-07 04:46:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:46:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:46:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:46:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:46:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:46:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:46:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:46:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:46:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:46:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:46:59 --> Sales::store - raw items: [{"product_id":4,"qty":2,"price":22,"subtotal":44}]
+DEBUG - 2026-05-07 04:46:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:47:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 04:47:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 05:06:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

@@ -56,3 +56,6 @@ $routes->get( 'utang',                  'Utang::index');
 $routes->get( 'utang/view/(:num)',      'Utang::view/$1');
 $routes->post('utang/pay/(:num)',       'Utang::pay/$1');
 $routes->get( 'utang/markpaid/(:num)', 'Utang::markPaid/$1');
+
+// Activity Logs
+$routes->get('logs', 'Logs::index');

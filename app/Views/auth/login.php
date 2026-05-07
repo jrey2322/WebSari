@@ -294,14 +294,10 @@
             </div>
             <div>
                 <strong>Owner</strong> →
-                owner@websari.com /
-                <strong>password</strong>
+                admin@websari.com /
+                <strong>adminsari</strong>
             </div>
-            <div>
-                <strong>Staff</strong> →
-                staff@websari.com /
-                <strong>password</strong>
-            </div>
+
         </div>
     </div>
 

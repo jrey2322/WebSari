@@ -254,34 +254,9 @@
         <!-- Register Form -->
         <form action="<?= base_url('register') ?>" method="POST">
             <?= csrf_field() ?>
-
-            <!-- Role Selection -->
-            <div class="mb-3">
-                <label class="form-label d-block mb-2">Register as:</label>
-                <div class="role-grid">
-                    <label class="role-option selected" id="optOwner">
-                        <input type="radio"
-                               name="role"
-                               value="owner"
-                               checked
-                               onchange="selectRole('owner')">
-                        <span class="r-icon">👑</span>
-                        <span class="r-label">Store Owner</span>
-                        <span class="r-desc">Full access & reports</span>
-                    </label>
-                    <label class="role-option" id="optStaff">
-                        <input type="radio"
-                               name="role"
-                               value="staff"
-                               onchange="selectRole('staff')">
-                        <span class="r-icon">👤</span>
-                        <span class="r-label">Staff / Cashier</span>
-                        <span class="r-desc">Sales & inventory</span>
-                    </label>
-                </div>
-            </div>
-
-            <div class="divider"></div>
+            
+            <!-- Default role to staff -->
+            <input type="hidden" name="role" value="staff">
 
             <!-- Name -->
             <div class="mb-3">
@@ -349,21 +324,6 @@
     </div>
 
 </div>
-
-<script>
-    function selectRole(role) {
-        var ownerOpt = document.getElementById('optOwner');
-        var staffOpt = document.getElementById('optStaff');
-
-        if (role === 'owner') {
-            ownerOpt.classList.add('selected');
-            staffOpt.classList.remove('selected');
-        } else {
-            staffOpt.classList.add('selected');
-            ownerOpt.classList.remove('selected');
-        }
-    }
-</script>
 
 </body>
 </html>
