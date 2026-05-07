@@ -67,7 +67,7 @@ function isActive(string $path): string {
 
         <a href="<?= base_url('utang') ?>"
    class="ws-nav-link <?= isActive('/utang') ?>">
-    <i class="bi bi-pencil-square"></i> Utang Tracker
+    <i class="bi bi-pencil-square"></i> Pending Payments
 </a>
 
         <?php if ($role === 'owner'): ?>

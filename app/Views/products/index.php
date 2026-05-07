@@ -185,6 +185,15 @@
                                         <?php if (session()->get('user_role') === 'owner'): ?>
                                             <td>
                                                 <div class="d-flex gap-1">
+                                                    <button class="btn btn-sm btn-ws-orange"
+                                                            style="padding:4px 10px;"
+                                                            onclick="openRestock(<?= $p['id'] ?>,
+                                                                    '<?= esc($p['name']) ?>',
+                                                                    <?= $p['stock'] ?>,
+                                                                    '<?= esc($p['unit']) ?>')"
+                                                            title="Restock">
+                                                        <i class="bi bi-plus-circle-fill"></i>
+                                                    </button>
                                                     <a href="<?= base_url('products/edit/'.$p['id']) ?>"
                                                        class="btn btn-sm btn-light"
                                                        style="padding:4px 10px;"
@@ -215,28 +224,63 @@
 <!-- Delete Modal -->
 <div class="modal fade" id="deleteModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered modal-sm">
-        <div class="modal-content" style="border-radius:16px;border:none;">
-            <div class="modal-body text-center p-4">
-                <div style="font-size:2.5rem;margin-bottom:12px;">🗑️</div>
-                <h6 class="fw-bold">Remove Product?</h6>
-                <p class="text-muted mb-0" id="delProdName"
-                   style="font-size:.82rem;"></p>
-                <p class="text-muted" style="font-size:.78rem;">
-                    This will mark it as inactive.
+        <div class="modal-content" style="border-radius:14px;border:none;">
+            <div class="modal-body p-4 text-center">
+                <div class="mb-3 text-danger" style="font-size:3rem;">
+                    <i class="bi bi-exclamation-circle"></i>
+                </div>
+                <h5 class="fw-bold">Delete Product?</h5>
+                <p class="text-muted small">
+                    Are you sure you want to delete <strong id="delProdName"></strong>? This cannot be undone.
                 </p>
-                <div class="d-flex gap-2 justify-content-center mt-2">
-                    <button class="btn btn-light btn-sm"
-                            data-bs-dismiss="modal">Cancel</button>
-                    <a href="#" id="delLink" class="btn btn-danger btn-sm">Delete</a>
+                <div class="d-grid gap-2 mt-4">
+                    <a id="delLink" href="#" class="btn btn-danger">Delete Now</a>
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+<!-- Restock Modal -->
+<div class="modal fade" id="restockModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content" style="border-radius:14px;border:none;">
+            <form action="<?= base_url('products/restock') ?>" method="POST">
+                <?= csrf_field() ?>
+                <input type="hidden" name="product_id" id="restockId">
+                <div class="modal-body p-4">
+                    <h5 class="fw-bold mb-1">Restock Product</h5>
+                    <p class="text-muted small mb-4" id="restockName"></p>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Quantity to Add</label>
+                        <div class="input-group">
+                            <input type="number" name="quantity" 
+                                   class="form-control" 
+                                   value="1" min="1" required>
+                            <span class="input-group-text" id="restockUnit"></span>
+                        </div>
+                        <small class="text-muted mt-1 d-block">
+                            Current Stock: <span id="restockCurrent" class="fw-bold"></span>
+                        </small>
+                    </div>
+
+                    <div class="d-grid gap-2 mt-4">
+                        <button type="submit" class="btn btn-ws-orange">
+                            <i class="bi bi-plus-lg me-1"></i>Add Stock
+                        </button>
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    // Filter logic
+    // Filtering logic
     function applyFilter() {
         const q     = document.getElementById('searchInput').value.toLowerCase();
         const cat   = document.getElementById('catFilter').value.toLowerCase();
@@ -261,6 +305,15 @@
         document.getElementById('delLink').href =
             '<?= base_url("products/delete") ?>/' + id;
         new bootstrap.Modal(document.getElementById('deleteModal')).show();
+    }
+
+    // Restock modal
+    function openRestock(id, name, current, unit) {
+        document.getElementById('restockId').value = id;
+        document.getElementById('restockName').textContent = name;
+        document.getElementById('restockCurrent').textContent = current + ' ' + unit;
+        document.getElementById('restockUnit').textContent = unit;
+        new bootstrap.Modal(document.getElementById('restockModal')).show();
     }
 </script>
 </body>

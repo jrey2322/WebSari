@@ -51,7 +51,7 @@
                         <select id="sStatus" class="form-select">
                             <option value="">All Status</option>
                             <option value="completed">Completed</option>
-                            <option value="utang">Utang</option>
+                            <option value="pending">Pending</option>
                             <option value="void">Void</option>
                         </select>
                     </div>
@@ -98,9 +98,9 @@
                             <?php else: ?>
                                 <?php foreach ($sales as $i => $s): ?>
                                     <tr data-payment="<?= $s['payment_method'] ?>"
-                                        data-status="<?= $s['status'] ?>"
+                                        data-status="<?= ($s['status'] === 'utang' || empty($s['status'])) ? 'pending' : $s['status'] ?>"
                                         data-date="<?= date('Y-m-d', strtotime($s['created_at'])) ?>"
-                                        data-search="<?= strtolower($s['invoice_no'].' '.$s['customer_name']) ?>">
+                                        data-search="<?= strtolower(esc($s['invoice_no'] . ' ' . $s['customer_name'])) ?>">
                                         <td class="text-muted"><?= $i+1 ?></td>
                                         <td>
                                             <a href="<?= base_url('sales/view/'.$s['id']) ?>"
@@ -132,11 +132,11 @@
                                                   $stC = match($st) {
                                                       'completed' => 'bg-success',
                                                       'void'      => 'bg-secondary',
-                                                      'utang'     => 'bg-warning text-dark',
+                                                      'pending', 'utang' => 'bg-warning text-dark',
                                                       default     => 'bg-secondary'
                                                   }; ?>
                                             <span class="badge <?= $stC ?>">
-                                                <?= ucfirst($st) ?>
+                                                <?= ($st === 'utang' || $st === 'pending' || empty($st)) ? 'Pending' : ucfirst($st) ?>
                                             </span>
                                         </td>
                                         <td style="font-size:.78rem;color:#64748b;">
@@ -179,10 +179,12 @@
         const dt  = document.getElementById('sDate').value;
 
         document.querySelectorAll('#salesTbl tbody tr').forEach(row => {
+            const rowStatus = row.dataset.status;
+
             const ok =
                 (!q   || row.dataset.search?.includes(q)) &&
                 (!pay || row.dataset.payment === pay)     &&
-                (!st  || row.dataset.status  === st)      &&
+                (!st  || rowStatus === st)      &&
                 (!dt  || row.dataset.date    === dt);
             row.style.display = ok ? '' : 'none';
         });

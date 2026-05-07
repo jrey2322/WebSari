@@ -53,7 +53,7 @@ class UtangModel extends Model
              FROM sales s
              LEFT JOIN users u  ON u.id = s.user_id
              LEFT JOIN utang_payments up ON up.sale_id = s.id
-             WHERE s.status = 'utang'
+             WHERE s.payment_method = 'utang'
              GROUP BY s.id
              ORDER BY s.created_at DESC"
         )->getResultArray();

@@ -9,7 +9,7 @@
                 <i class="bi bi-list"></i>
             </button>
             <div class="d-flex flex-column">
-                <span style="font-size: 1.1rem; line-height: 1.2">📝 Utang Tracker</span>
+                <span style="font-size: 1.1rem; line-height: 1.2">📝 Pending Payments</span>
                 <small style="font-size: .7rem">Track customer debts</small>
             </div>
         </div>
@@ -43,7 +43,7 @@
                         <i class="bi bi-exclamation-triangle-fill"></i>
                     </div>
                     <h2><?= count($unpaid) ?></h2>
-                    <p>Unpaid Utang</p>
+                    <p>Pending Payments</p>
                 </div>
             </div>
             <div class="col-md-4">
@@ -62,8 +62,8 @@
                     <div class="s-icon">
                         <i class="bi bi-check-circle-fill"></i>
                     </div>
-                    <h2><?= count($paid) ?></h2>
-                    <p>Fully Paid</p>
+                    <h2>₱<?= number_format($totalCollected, 2) ?></h2>
+                    <p>Total Collected</p>
                 </div>
             </div>
         </div>
@@ -83,7 +83,7 @@
                     <div class="text-center py-4">
                         <div style="font-size:2.5rem">🎉</div>
                         <p class="text-muted mt-2">
-                            No outstanding utang! Great job!
+                            No pending payments! Great job!
                         </p>
                     </div>
                 <?php else: ?>
@@ -184,17 +184,22 @@
             </div>
         </div>
 
-        <!-- Paid Utang -->
-        <?php if (!empty($paid)): ?>
-            <div class="ws-card">
-                <div class="ws-card-body">
-                    <h6 class="fw-bold mb-3">
-                        <i class="bi bi-check-circle-fill text-success me-2"></i>
-                        Fully Paid Utang
-                        <span class="badge bg-success ms-1">
-                            <?= count($paid) ?>
-                        </span>
-                    </h6>
+        <!-- Paid Transactions -->
+        <div class="ws-card">
+            <div class="ws-card-body">
+                <h6 class="fw-bold mb-3">
+                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                    Fully Paid Transactions
+                    <span class="badge bg-success ms-1">
+                        <?= count($paid) ?>
+                    </span>
+                </h6>
+                
+                <?php if (empty($paid)): ?>
+                    <div class="text-center py-4 text-muted small">
+                        No fully paid transactions yet.
+                    </div>
+                <?php else: ?>
                     <div class="table-responsive">
                         <table class="table ws-table">
                             <thead>
@@ -235,9 +240,9 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
+                <?php endif; ?>
             </div>
-        <?php endif; ?>
+        </div>
 
     </div>
 </div>

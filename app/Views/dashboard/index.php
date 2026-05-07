@@ -221,12 +221,12 @@
                                                 $stClass = match($st) {
                                                     'completed' => 'bg-success',
                                                     'void'      => 'bg-secondary',
-                                                    'utang'     => 'bg-warning text-dark',
-                                                    default     => 'bg-secondary'
+                                                    'pending', 'utang' => 'bg-warning text-dark',
+                                                    default     => (empty($st) ? 'bg-warning text-dark' : 'bg-secondary')
                                                 };
                                             ?>
                                             <span class="badge <?= $stClass ?>">
-                                                <?= ucfirst($st) ?>
+                                                <?= ($st === 'utang' || $st === 'pending' || empty($st)) ? 'Pending' : ucfirst($st) ?>
                                             </span>
                                         </td>
                                         <td class="text-muted" style="font-size:.78rem;">

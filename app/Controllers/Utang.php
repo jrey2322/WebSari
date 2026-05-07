@@ -35,7 +35,10 @@ class Utang extends BaseController
         $paid   = [];
 
         foreach ($allUtang as $u) {
-            if ((float)$u['balance'] <= 0) {
+            // Force strict balance check to avoid floating point issues
+            $balance = round((float)$u['balance'], 2);
+            // Move to paid if balance is zero OR status is completed
+            if ($balance <= 0 || $u['status'] === 'completed') {
                 $paid[]   = $u;
             } else {
                 $unpaid[] = $u;
@@ -43,13 +46,15 @@ class Utang extends BaseController
         }
 
         // Summary
-        $totalDebt = array_sum(array_column($unpaid, 'balance'));
+        $totalDebt      = array_sum(array_column($unpaid, 'balance'));
+        $totalCollected = array_sum(array_column($allUtang, 'paid_amount'));
 
         $data = [
-            'title'     => 'Utang Tracker',
-            'unpaid'    => $unpaid,
-            'paid'      => $paid,
-            'totalDebt' => $totalDebt,
+            'title'          => 'Pending Payments',
+            'unpaid'         => $unpaid,
+            'paid'           => $paid,
+            'totalDebt'      => $totalDebt,
+            'totalCollected' => $totalCollected,
         ];
 
         return view('utang/index', $data);
@@ -63,9 +68,9 @@ class Utang extends BaseController
 
         $sale = $this->saleModel->getWithDetails($id);
 
-        if (!$sale || $sale['status'] !== 'utang') {
+        if (!$sale || $sale['payment_method'] !== 'utang') {
             return redirect()->to(base_url('utang'))
-                             ->with('error', 'Utang record not found.');
+                             ->with('error', 'Pending record not found.');
         }
 
         $payments  = $this->utangModel->getBySale($id);
@@ -91,9 +96,14 @@ class Utang extends BaseController
 
         $sale = $this->saleModel->find($id);
 
-        if (!$sale || $sale['status'] !== 'utang') {
+        if (!$sale || $sale['payment_method'] !== 'utang') {
             return redirect()->to(base_url('utang'))
-                             ->with('error', 'Sale not found.');
+                             ->with('error', 'Sale not found or invalid payment method.');
+        }
+
+        if ($sale['status'] === 'completed') {
+            return redirect()->to(base_url('utang'))
+                             ->with('error', 'This sale is already fully paid.');
         }
 
         $amount = floatval($this->request->getPost('amount'));
@@ -125,31 +135,21 @@ class Utang extends BaseController
         $newTotalPaid = $this->utangModel->totalPaidBySale($id);
         $newBalance   = $sale['total'] - $newTotalPaid;
 
-        // If fully paid, deduct stock and mark as completed
+        // If fully paid, mark as completed
         if ($newBalance <= 0) {
-            // Deduct stock now (was not deducted during utang sale)
-            $items = $this->saleItemModel->getBySale($id);
-            foreach ($items as $item) {
-                $this->productModel->deductStock(
-                    $item['product_id'],
-                    $item['quantity']
-                );
-            }
-
-            // Mark sale as completed
             $this->saleModel->where('id', $id)->set([
                 'status'      => 'completed',
                 'amount_paid' => $newTotalPaid,
             ])->update();
 
             return redirect()->to(base_url('utang'))
-                             ->with('success',
-                                 '✅ Utang fully paid! Sale marked as completed.');
+                             ->with('success', '✅ Utang fully paid! Sale marked as completed.');
         }
 
         // Partial payment - update amount_paid
         $this->saleModel->where('id', $id)->set([
             'amount_paid' => $newTotalPaid,
+            'status'      => 'pending',
         ])->update();
 
         return redirect()->to(base_url('utang/view/' . $id))
@@ -172,13 +172,19 @@ class Utang extends BaseController
                              ->with('error', 'Sale not found.');
         }
 
-        // Deduct stock
-        $items = $this->saleItemModel->getBySale($id);
-        foreach ($items as $item) {
-            $this->productModel->deductStock(
-                $item['product_id'],
-                $item['quantity']
-            );
+        // Calculate remaining balance to record as a final payment
+        $totalPaid = $this->utangModel->totalPaidBySale($id);
+        $remaining = $sale['total'] - $totalPaid;
+
+        if ($remaining > 0) {
+            // Record the final payment automatically
+            $this->utangModel->builder()->insert([
+                'sale_id'     => $id,
+                'amount'      => $remaining,
+                'notes'       => 'Full payment (Manual Override)',
+                'recorded_by' => $this->session->get('user_id'),
+                'created_at'  => date('Y-m-d H:i:s'),
+            ]);
         }
 
         $this->saleModel->where('id', $id)->set([
@@ -187,6 +193,6 @@ class Utang extends BaseController
         ])->update();
 
         return redirect()->to(base_url('utang'))
-                         ->with('success', '✅ Utang marked as fully paid!');
+                         ->with('success', '✅ Sale marked as fully paid and moved to history!');
     }
 }

@@ -5,8 +5,13 @@
 <div class="ws-main">
     <header class="ws-topbar">
         <div class="page-title">
-            Sale Details
-            <small><?= esc($sale['invoice_no']) ?></small>
+            <button class="mobile-toggle" onclick="toggleSidebar()">
+                <i class="bi bi-list"></i>
+            </button>
+            <div class="d-flex flex-column">
+                <span style="font-size: 1.1rem; line-height: 1.2">Sale Details</span>
+                <small style="font-size: .7rem"><?= esc($sale['invoice_no']) ?></small>
+            </div>
         </div>
         <div class="d-flex gap-2">
             <a href="<?= base_url('sales/invoice/'.$sale['id']) ?>"
@@ -56,13 +61,13 @@
                                 $stClass = match($st) {
                                     'completed' => 'bg-success',
                                     'void'      => 'bg-secondary',
-                                    'utang'     => 'bg-warning text-dark',
+                                    'pending', 'utang' => 'bg-warning text-dark',
                                     default     => 'bg-secondary'
                                 };
                             ?>
                             <span class="badge <?= $stClass ?>"
                                   style="font-size:.82rem;padding:7px 15px;">
-                                <?= strtoupper($st) ?>
+                                <?= ($st === 'utang' || $st === 'pending') ? 'PENDING' : strtoupper($st) ?>
                             </span>
                         </div>
 

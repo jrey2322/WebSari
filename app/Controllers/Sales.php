@@ -110,7 +110,7 @@ class Sales extends BaseController
             : floatval($this->request->getPost('amount_paid') ?? 0);
 
         $changeAmount = max(0, $amountPaid - $total);
-        $status       = $paymentMethod === 'utang' ? 'utang' : 'completed';
+        $status       = $paymentMethod === 'utang' ? 'pending' : 'completed';
 
         // ✅ Start DB transaction
         $db = \Config\Database::connect();
@@ -149,12 +149,11 @@ class Sales extends BaseController
                     'subtotal'   => floatval($item['subtotal']),
                 ]);
             
-                if ($status !== 'utang') {
-                    $this->productModel->deductStock(
-                        intval($item['product_id']),
-                        $qty
-                    );
-                }
+                // Always deduct stock regardless of payment method
+                $this->productModel->deductStock(
+                    intval($item['product_id']),
+                    $qty
+                );
             }
 
             $db->transComplete();

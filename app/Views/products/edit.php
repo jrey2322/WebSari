@@ -291,6 +291,14 @@
                                 <i class="bi bi-save-fill me-2"></i>Update Product
                             </button>
 
+                            <button type="button" class="btn btn-ws-orange w-100 mb-2"
+                                    onclick="openRestock(<?= $product['id'] ?>, 
+                                            '<?= esc($product['name']) ?>', 
+                                            <?= $product['stock'] ?>, 
+                                            '<?= esc($product['unit']) ?>')">
+                                <i class="bi bi-plus-circle-fill me-2"></i>Restock Product
+                            </button>
+
                             <a href="<?= base_url('products') ?>"
                                class="btn btn-light w-100 mb-2">
                                 <i class="bi bi-x-circle me-1"></i>Cancel
@@ -353,6 +361,42 @@
     </div>
 </div>
 
+<!-- Restock Modal -->
+<div class="modal fade" id="restockModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content" style="border-radius:14px;border:none;">
+            <form action="<?= base_url('products/restock') ?>" method="POST">
+                <?= csrf_field() ?>
+                <input type="hidden" name="product_id" id="restockId">
+                <div class="modal-body p-4">
+                    <h5 class="fw-bold mb-1">Restock Product</h5>
+                    <p class="text-muted small mb-4" id="restockName"></p>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Quantity to Add</label>
+                        <div class="input-group">
+                            <input type="number" name="quantity" 
+                                   class="form-control" 
+                                   value="1" min="1" required>
+                            <span class="input-group-text" id="restockUnit"></span>
+                        </div>
+                        <small class="text-muted mt-1 d-block">
+                            Current Stock: <span id="restockCurrent" class="fw-bold"></span>
+                        </small>
+                    </div>
+
+                    <div class="d-grid gap-2 mt-4">
+                        <button type="submit" class="btn btn-ws-orange">
+                            <i class="bi bi-plus-lg me-1"></i>Add Stock
+                        </button>
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     // ── Image Preview ─────────────────────────────────────
@@ -386,6 +430,14 @@
             '₱' + profit.toFixed(2);
         document.getElementById('showProfit').className =
             'fw-bold ' + (profit >= 0 ? 'text-success' : 'text-danger');
+    }
+
+    function openRestock(id, name, current, unit) {
+        document.getElementById('restockId').value = id;
+        document.getElementById('restockName').textContent = name;
+        document.getElementById('restockCurrent').textContent = current + ' ' + unit;
+        document.getElementById('restockUnit').textContent = unit;
+        new bootstrap.Modal(document.getElementById('restockModal')).show();
     }
 </script>
 

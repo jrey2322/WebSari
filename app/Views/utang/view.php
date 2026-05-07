@@ -5,7 +5,7 @@
 <div class="ws-main">
     <header class="ws-topbar">
         <div class="page-title">
-            Utang Detail
+            Pending Detail
             <small><?= esc($sale['customer_name']) ?></small>
         </div>
         <div class="d-flex gap-2">
@@ -66,7 +66,7 @@
                             <span class="badge <?= $balance <= 0
                                 ? 'bg-success' : 'bg-warning text-dark' ?>"
                                   style="font-size:.82rem;padding:7px 14px">
-                                <?= $balance <= 0 ? 'PAID' : 'UTANG' ?>
+                                <?= $balance <= 0 ? 'PAID' : 'PENDING' ?>
                             </span>
                         </div>
 
