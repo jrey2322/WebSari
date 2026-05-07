@@ -1,0 +1,442 @@
+DEBUG - 2026-05-07 00:14:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:15:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:15:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:15:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:16:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:16:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:16:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:16:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:16:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-07 00:16:51 --> TypeError: CodeIgniter\Database\BaseBuilder::setBind(): Argument #1 ($key) must be of type string, int given, called in D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\Database\BaseBuilder.php on line 1575
+[Method: POST, Route: utang/pay/4]
+in SYSTEMPATH\Database\BaseBuilder.php on line 3528.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1575): CodeIgniter\Database\BaseBuilder->setBind(0, '2026-05-07 00:16:51', true)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->set([...], '2026-05-07 00:16:51', true)
+ 3 SYSTEMPATH\BaseModel.php(899): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(668): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Utang.php(116): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Utang->pay(4)
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Utang))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\xampp\\htdocs\\WebSari\\codeigniter4-framework-b3359be\\public\\index.php')
+DEBUG - 2026-05-07 00:16:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:16:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-07 00:16:58 --> TypeError: CodeIgniter\Database\BaseBuilder::setBind(): Argument #1 ($key) must be of type string, int given, called in D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\Database\BaseBuilder.php on line 1575
+[Method: POST, Route: utang/pay/4]
+in SYSTEMPATH\Database\BaseBuilder.php on line 3528.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1575): CodeIgniter\Database\BaseBuilder->setBind(0, '2026-05-07 00:16:58', true)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->set([...], '2026-05-07 00:16:58', true)
+ 3 SYSTEMPATH\BaseModel.php(899): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(668): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Utang.php(116): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Utang->pay(4)
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Utang))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\xampp\\htdocs\\WebSari\\codeigniter4-framework-b3359be\\public\\index.php')
+DEBUG - 2026-05-07 00:16:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:17:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:17:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:17:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:17:51 --> Sales::store - raw items: [{"product_id":8,"qty":3,"price":38,"subtotal":114}]
+DEBUG - 2026-05-07 00:17:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:17:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:17:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:18:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:18:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:18:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:18:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:18:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:18:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:27:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:27:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:28:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-07 00:28:41 --> TypeError: CodeIgniter\Database\BaseBuilder::setBind(): Argument #1 ($key) must be of type string, int given, called in D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\Database\BaseBuilder.php on line 1575
+[Method: POST, Route: utang/pay/5]
+in SYSTEMPATH\Database\BaseBuilder.php on line 3528.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1575): CodeIgniter\Database\BaseBuilder->setBind(0, '2026-05-07 00:28:41', true)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->set([...], '2026-05-07 00:28:41', true)
+ 3 SYSTEMPATH\BaseModel.php(899): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(668): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Utang.php(116): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Utang->pay(5)
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Utang))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\xampp\\htdocs\\WebSari\\codeigniter4-framework-b3359be\\public\\index.php')
+DEBUG - 2026-05-07 00:39:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:39:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:39:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-07 00:39:46 --> TypeError: CodeIgniter\Database\BaseBuilder::setBind(): Argument #1 ($key) must be of type string, int given, called in D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\Database\BaseBuilder.php on line 1575
+[Method: POST, Route: utang/pay/5]
+in SYSTEMPATH\Database\BaseBuilder.php on line 3528.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1575): CodeIgniter\Database\BaseBuilder->setBind(0, '2026-05-07 00:39:46', true)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->set([...], '2026-05-07 00:39:46', true)
+ 3 SYSTEMPATH\BaseModel.php(899): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(668): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Utang.php(116): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Utang->pay(5)
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Utang))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\xampp\\htdocs\\WebSari\\codeigniter4-framework-b3359be\\public\\index.php')
+DEBUG - 2026-05-07 00:39:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:39:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-07 00:39:56 --> TypeError: CodeIgniter\Database\BaseBuilder::setBind(): Argument #1 ($key) must be of type string, int given, called in D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\Database\BaseBuilder.php on line 1575
+[Method: POST, Route: utang/pay/5]
+in SYSTEMPATH\Database\BaseBuilder.php on line 3528.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1575): CodeIgniter\Database\BaseBuilder->setBind(0, '2026-05-07 00:39:56', true)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->set([...], '2026-05-07 00:39:56', true)
+ 3 SYSTEMPATH\BaseModel.php(899): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(668): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Utang.php(116): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Utang->pay(5)
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Utang))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\xampp\\htdocs\\WebSari\\codeigniter4-framework-b3359be\\public\\index.php')
+DEBUG - 2026-05-07 00:40:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:40:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:40:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:40:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:40:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:40:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-07 00:40:18 --> TypeError: CodeIgniter\Database\BaseBuilder::setBind(): Argument #1 ($key) must be of type string, int given, called in D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\Database\BaseBuilder.php on line 1575
+[Method: POST, Route: utang/pay/5]
+in SYSTEMPATH\Database\BaseBuilder.php on line 3528.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1575): CodeIgniter\Database\BaseBuilder->setBind(0, '2026-05-07 00:40:18', true)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->set([...], '2026-05-07 00:40:18', true)
+ 3 SYSTEMPATH\BaseModel.php(899): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(668): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Utang.php(116): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Utang->pay(5)
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Utang))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\xampp\\htdocs\\WebSari\\codeigniter4-framework-b3359be\\public\\index.php')
+DEBUG - 2026-05-07 00:43:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:43:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:43:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:43:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:43:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:43:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:43:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:43:49 --> Sales::store - raw items: [{"product_id":8,"qty":5,"price":38,"subtotal":190}]
+DEBUG - 2026-05-07 00:43:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:43:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:43:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:43:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-07 00:43:56 --> TypeError: CodeIgniter\Database\BaseBuilder::setBind(): Argument #1 ($key) must be of type string, int given, called in D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\Database\BaseBuilder.php on line 1575
+[Method: POST, Route: utang/pay/6]
+in SYSTEMPATH\Database\BaseBuilder.php on line 3528.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1575): CodeIgniter\Database\BaseBuilder->setBind(0, '2026-05-07 00:43:56', true)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->set([...], '2026-05-07 00:43:56', true)
+ 3 SYSTEMPATH\BaseModel.php(899): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(668): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Utang.php(116): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Utang->pay(6)
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Utang))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\xampp\\htdocs\\WebSari\\codeigniter4-framework-b3359be\\public\\index.php')
+DEBUG - 2026-05-07 00:44:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:45:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-07 00:45:01 --> TypeError: CodeIgniter\Database\BaseBuilder::setBind(): Argument #1 ($key) must be of type string, int given, called in D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\Database\BaseBuilder.php on line 1575
+[Method: POST, Route: utang/pay/6]
+in SYSTEMPATH\Database\BaseBuilder.php on line 3528.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1575): CodeIgniter\Database\BaseBuilder->setBind(0, '2026-05-07 00:45:01', true)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->set([...], '2026-05-07 00:45:01', true)
+ 3 SYSTEMPATH\BaseModel.php(899): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(668): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Utang.php(116): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Utang->pay(6)
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Utang))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\xampp\\htdocs\\WebSari\\codeigniter4-framework-b3359be\\public\\index.php')
+DEBUG - 2026-05-07 00:45:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:45:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:46:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:46:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:48:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:48:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:48:10 --> Sales::store - raw items: [{"product_id":8,"qty":3,"price":38,"subtotal":114}]
+DEBUG - 2026-05-07 00:48:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:48:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:48:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:48:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:50:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:50:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-07 00:50:22 --> TypeError: CodeIgniter\Database\BaseBuilder::setBind(): Argument #1 ($key) must be of type string, int given, called in D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\Database\BaseBuilder.php on line 1575
+[Method: POST, Route: utang/pay/7]
+in SYSTEMPATH\Database\BaseBuilder.php on line 3528.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1575): CodeIgniter\Database\BaseBuilder->setBind(0, '2026-05-07 00:50:22', true)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->set([...], '2026-05-07 00:50:22', true)
+ 3 SYSTEMPATH\BaseModel.php(899): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(668): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Utang.php(116): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Utang->pay(7)
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Utang))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\xampp\\htdocs\\WebSari\\codeigniter4-framework-b3359be\\public\\index.php')
+DEBUG - 2026-05-07 00:51:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:51:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-07 00:51:05 --> TypeError: CodeIgniter\Database\BaseBuilder::setBind(): Argument #1 ($key) must be of type string, int given, called in D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\Database\BaseBuilder.php on line 1575
+[Method: POST, Route: utang/pay/7]
+in SYSTEMPATH\Database\BaseBuilder.php on line 3528.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1575): CodeIgniter\Database\BaseBuilder->setBind(0, '2026-05-07 00:51:05', true)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->set([...], '2026-05-07 00:51:05', true)
+ 3 SYSTEMPATH\BaseModel.php(899): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(668): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Utang.php(116): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Utang->pay(7)
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Utang))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\xampp\\htdocs\\WebSari\\codeigniter4-framework-b3359be\\public\\index.php')
+DEBUG - 2026-05-07 00:51:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:51:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:54:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:54:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:54:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:54:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-07 00:54:59 --> TypeError: CodeIgniter\Database\BaseBuilder::setBind(): Argument #1 ($key) must be of type string, int given, called in D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\Database\BaseBuilder.php on line 1575
+[Method: POST, Route: utang/pay/7]
+in SYSTEMPATH\Database\BaseBuilder.php on line 3528.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1575): CodeIgniter\Database\BaseBuilder->setBind(0, '2026-05-07 00:54:59', true)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->set([...], '2026-05-07 00:54:59', true)
+ 3 SYSTEMPATH\BaseModel.php(899): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(668): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Utang.php(116): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Utang->pay(7)
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Utang))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\xampp\\htdocs\\WebSari\\codeigniter4-framework-b3359be\\public\\index.php')
+DEBUG - 2026-05-07 00:58:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:58:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-07 00:58:39 --> TypeError: CodeIgniter\Database\BaseBuilder::setBind(): Argument #1 ($key) must be of type string, int given, called in D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\Database\BaseBuilder.php on line 1575
+[Method: POST, Route: utang/pay/7]
+in SYSTEMPATH\Database\BaseBuilder.php on line 3528.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1575): CodeIgniter\Database\BaseBuilder->setBind(0, '2026-05-07 00:58:39', true)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->set([...], '2026-05-07 00:58:39', true)
+ 3 SYSTEMPATH\BaseModel.php(899): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(668): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Utang.php(116): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Utang->pay(7)
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Utang))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\xampp\\htdocs\\WebSari\\codeigniter4-framework-b3359be\\public\\index.php')
+DEBUG - 2026-05-07 00:58:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:58:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:58:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:58:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:58:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:59:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:59:01 --> Sales::store - raw items: [{"product_id":8,"qty":3,"price":38,"subtotal":114}]
+DEBUG - 2026-05-07 00:59:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:59:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 00:59:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 01:00:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 01:00:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 01:00:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 01:00:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 01:00:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 01:00:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 01:00:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 03:38:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 03:38:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 03:38:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 03:38:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 03:44:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-05-07 03:44:16 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'websari', 3306, '', 0)
+#1 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\Database\BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\Database\BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#3 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\app\Models\UtangModel.php(48): CodeIgniter\Database\BaseConnection->query('SELECT s.*,\r\n  ...')
+#4 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\app\Controllers\Utang.php(31): App\Models\UtangModel->getAllUtang()
+#5 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\CodeIgniter.php(951): App\Controllers\Utang->index()
+#6 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Utang))
+#7 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#9 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\rewrite.php(44): require_once('D:\\xampp\\htdocs...')
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\Database\BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\Database\BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#2 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\app\Models\UtangModel.php(48): CodeIgniter\Database\BaseConnection->query('SELECT s.*,\r\n  ...')
+#3 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\app\Controllers\Utang.php(31): App\Models\UtangModel->getAllUtang()
+#4 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\CodeIgniter.php(951): App\Controllers\Utang->index()
+#5 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Utang))
+#6 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#8 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\rewrite.php(44): require_once('D:\\xampp\\htdocs...')
+#11 {main}
+CRITICAL - 2026-05-07 03:44:16 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+[Method: GET, Route: utang]
+in SYSTEMPATH\Database\BaseConnection.php on line 606.
+ 1 SYSTEMPATH\Database\BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+ 2 APPPATH\Models\UtangModel.php(48): CodeIgniter\Database\BaseConnection->query('SELECT s.*,
+                    u.name AS cashier_name,
+                    COALESCE(SUM(up.amount), 0) AS paid_amount,
+                    (s.total - COALESCE(SUM(up.amount), 0)) AS balance
+             FROM sales s
+             LEFT JOIN users u  ON u.id = s.user_id
+             LEFT JOIN utang_payments up ON up.sale_id = s.id
+             WHERE s.status = \'utang\'
+             GROUP BY s.id
+             ORDER BY s.created_at DESC')
+ 3 APPPATH\Controllers\Utang.php(31): App\Models\UtangModel->getAllUtang()
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Utang->index()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Utang))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('D:\\xampp\\htdocs\\WebSari\\codeigniter4-framework-b3359be\\public\\index.php')
+DEBUG - 2026-05-07 03:44:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-05-07 03:44:24 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'websari', 3306, '', 0)
+#1 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\Database\BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\Database\BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#3 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\app\Models\UtangModel.php(48): CodeIgniter\Database\BaseConnection->query('SELECT s.*,\r\n  ...')
+#4 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\app\Controllers\Utang.php(31): App\Models\UtangModel->getAllUtang()
+#5 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\CodeIgniter.php(951): App\Controllers\Utang->index()
+#6 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Utang))
+#7 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#9 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\rewrite.php(44): require_once('D:\\xampp\\htdocs...')
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\Database\BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\Database\BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+#2 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\app\Models\UtangModel.php(48): CodeIgniter\Database\BaseConnection->query('SELECT s.*,\r\n  ...')
+#3 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\app\Controllers\Utang.php(31): App\Models\UtangModel->getAllUtang()
+#4 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\CodeIgniter.php(951): App\Controllers\Utang->index()
+#5 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Utang))
+#6 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\Boot.php(417): CodeIgniter\CodeIgniter->run()
+#8 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\rewrite.php(44): require_once('D:\\xampp\\htdocs...')
+#11 {main}
+CRITICAL - 2026-05-07 03:44:24 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+[Method: GET, Route: utang]
+in SYSTEMPATH\Database\BaseConnection.php on line 606.
+ 1 SYSTEMPATH\Database\BaseConnection.php(795): CodeIgniter\Database\BaseConnection->initialize()
+ 2 APPPATH\Models\UtangModel.php(48): CodeIgniter\Database\BaseConnection->query('SELECT s.*,
+                    u.name AS cashier_name,
+                    COALESCE(SUM(up.amount), 0) AS paid_amount,
+                    (s.total - COALESCE(SUM(up.amount), 0)) AS balance
+             FROM sales s
+             LEFT JOIN users u  ON u.id = s.user_id
+             LEFT JOIN utang_payments up ON up.sale_id = s.id
+             WHERE s.status = \'utang\'
+             GROUP BY s.id
+             ORDER BY s.created_at DESC')
+ 3 APPPATH\Controllers\Utang.php(31): App\Models\UtangModel->getAllUtang()
+ 4 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Utang->index()
+ 5 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Utang))
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('D:\\xampp\\htdocs\\WebSari\\codeigniter4-framework-b3359be\\public\\index.php')
+DEBUG - 2026-05-07 03:47:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 03:47:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 03:47:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 03:47:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 03:47:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 03:47:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 03:48:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 03:48:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 03:48:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 03:48:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 03:48:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 03:48:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 03:48:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 03:48:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 03:48:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-07 03:48:47 --> TypeError: CodeIgniter\Database\BaseBuilder::setBind(): Argument #1 ($key) must be of type string, int given, called in D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\Database\BaseBuilder.php on line 1575
+[Method: POST, Route: utang/pay/8]
+in SYSTEMPATH\Database\BaseBuilder.php on line 3528.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1575): CodeIgniter\Database\BaseBuilder->setBind(0, '2026-05-07 03:48:47', true)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->set([...], '2026-05-07 03:48:47', true)
+ 3 SYSTEMPATH\BaseModel.php(899): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(668): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Utang.php(116): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Utang->pay(8)
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Utang))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\xampp\\htdocs\\WebSari\\codeigniter4-framework-b3359be\\public\\index.php')
+DEBUG - 2026-05-07 03:53:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 03:53:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 03:53:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-07 03:53:40 --> TypeError: CodeIgniter\Database\BaseBuilder::setBind(): Argument #1 ($key) must be of type string, int given, called in D:\xampp\htdocs\WebSari\codeigniter4-framework-b3359be\system\Database\BaseBuilder.php on line 1575
+[Method: POST, Route: utang/pay/8]
+in SYSTEMPATH\Database\BaseBuilder.php on line 3528.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1575): CodeIgniter\Database\BaseBuilder->setBind(0, '2026-05-07 03:53:40', true)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->set([...], '2026-05-07 03:53:40', true)
+ 3 SYSTEMPATH\BaseModel.php(899): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(668): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Utang.php(116): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(951): App\Controllers\Utang->pay(8)
+ 7 SYSTEMPATH\CodeIgniter.php(497): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Utang))
+ 8 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(417): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('D:\\xampp\\htdocs\\WebSari\\codeigniter4-framework-b3359be\\public\\index.php')
+DEBUG - 2026-05-07 03:56:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 03:56:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 03:56:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 03:56:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 03:56:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 03:56:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 03:56:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 03:56:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-07 03:57:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

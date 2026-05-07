@@ -61,6 +61,11 @@ function isActive(string $path): string {
             <i class="bi bi-receipt-cutoff"></i> Sales History
         </a>
 
+        <a href="<?= base_url('utang') ?>"
+   class="ws-nav-link <?= isActive('/utang') ?>">
+    <i class="bi bi-pencil-square"></i> Utang Tracker
+</a>
+
         <?php if ($role === 'owner'): ?>
         <div class="ws-nav-section mt-1">Owner</div>
 

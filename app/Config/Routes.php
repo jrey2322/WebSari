@@ -51,3 +51,8 @@ $routes->post('users/store',         'Users::store');
 $routes->get( 'users/toggle/(:num)', 'Users::toggle/$1');
 $routes->get( 'users/delete/(:num)', 'Users::delete/$1');
 
+// Add these utang routes
+$routes->get( 'utang',                  'Utang::index');
+$routes->get( 'utang/view/(:num)',      'Utang::view/$1');
+$routes->post('utang/pay/(:num)',       'Utang::pay/$1');
+$routes->get( 'utang/markpaid/(:num)', 'Utang::markPaid/$1');
