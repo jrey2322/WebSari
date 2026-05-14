@@ -4,20 +4,18 @@ namespace App\Controllers;
 
 use App\Models\ProductModel;
 use App\Models\CategoryModel;
-use App\Models\ActivityLogModel;
 
 class Products extends BaseController
 {
     protected $productModel;
     protected $categoryModel;
-    protected $logModel;
 
     public function __construct()
     {
         $this->productModel  = new ProductModel();
         $this->categoryModel = new CategoryModel();
-        $this->logModel      = new ActivityLogModel();
     }
+
 
     public function index()
     {
@@ -200,14 +198,8 @@ class Products extends BaseController
         $newStock = $product['stock'] + $qty;
         $this->productModel->update($id, ['stock' => $newStock]);
 
-        // Log the activity
-        $this->logModel->log(
-            "Restocked product: {$product['name']}",
-            "INVENTORY",
-            "Added {$qty} {$product['unit']} to existing stock. New total: {$newStock}."
-        );
-
         return redirect()->to('/products')
+
                          ->with('success', "✅ Added {$qty} {$product['unit']} to " . esc($product['name']));
     }
 

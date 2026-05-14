@@ -82,11 +82,6 @@ function isActive(string $path): string {
            class="ws-nav-link <?= isActive('/users') ?>">
             <i class="bi bi-people-fill"></i> Manage Staff
         </a>
-
-        <a href="<?= base_url('logs') ?>"
-           class="ws-nav-link <?= isActive('/logs') ?>">
-            <i class="bi bi-journal-text"></i> Activity Log
-        </a>
         <?php endif; ?>
 
     </nav>

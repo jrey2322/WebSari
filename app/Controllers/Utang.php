@@ -22,6 +22,7 @@ class Utang extends BaseController
         $this->productModel  = new ProductModel();
     }
 
+
     // ── Utang List ────────────────────────────────────────
     public function index()
     {
@@ -135,16 +136,16 @@ class Utang extends BaseController
         $newTotalPaid = $this->utangModel->totalPaidBySale($id);
         $newBalance   = $sale['total'] - $newTotalPaid;
 
-        // If fully paid, mark as completed
-        if ($newBalance <= 0) {
-            $this->saleModel->where('id', $id)->set([
-                'status'      => 'completed',
-                'amount_paid' => $newTotalPaid,
-            ])->update();
+            // If fully paid, mark as completed
+            if ($newBalance <= 0) {
+                $this->saleModel->where('id', $id)->set([
+                    'status'      => 'completed',
+                    'amount_paid' => $newTotalPaid,
+                ])->update();
 
-            return redirect()->to(base_url('utang'))
-                             ->with('success', '✅ Utang fully paid! Sale marked as completed.');
-        }
+                return redirect()->to(base_url('utang'))
+                                 ->with('success', '✅ Utang fully paid! Sale marked as completed.');
+            }
 
         // Partial payment - update amount_paid
         $this->saleModel->where('id', $id)->set([
@@ -153,6 +154,7 @@ class Utang extends BaseController
         ])->update();
 
         return redirect()->to(base_url('utang/view/' . $id))
+
                          ->with('success',
                              '💰 Payment of ₱' . number_format($amount, 2) .
                              ' recorded! Remaining balance: ₱' .
@@ -193,6 +195,7 @@ class Utang extends BaseController
         ])->update();
 
         return redirect()->to(base_url('utang'))
+
                          ->with('success', '✅ Sale marked as fully paid and moved to history!');
     }
 }

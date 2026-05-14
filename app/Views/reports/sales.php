@@ -58,11 +58,16 @@
         <div class="row g-3 mb-4">
             <?php
                 $completed = array_filter($sales, fn($s) => $s['status'] === 'completed');
-                $utang     = array_filter($sales, fn($s) => $s['status'] === 'utang');
+                $utang     = array_filter($sales, fn($s) => $s['payment_method'] === 'utang' && $s['status'] === 'pending');
                 $void      = array_filter($sales, fn($s) => $s['status'] === 'void');
-                $utangTot  = array_sum(array_column(iterator_to_array(
-                                 new ArrayIterator($utang)), 'total'));
+                
+                // For Utang Amount, we should show the remaining balance (total - amount_paid)
+                $utangTot = 0;
+                foreach ($utang as $u) {
+                    $utangTot += ($u['total'] - ($u['amount_paid'] ?? 0));
+                }
             ?>
+
             <div class="col-md-3">
                 <div class="ws-card">
                     <div class="ws-card-body text-center">
@@ -170,13 +175,15 @@
                                                   $sC = match($st) {
                                                       'completed' => 'bg-success',
                                                       'void'      => 'bg-secondary',
+                                                      'pending'   => 'bg-warning text-dark',
                                                       'utang'     => 'bg-warning text-dark',
                                                       default     => 'bg-secondary'
                                                   }; ?>
                                             <span class="badge <?= $sC ?>">
-                                                <?= ucfirst($st) ?>
+                                                <?= $st === 'pending' ? 'Pending' : ucfirst($st) ?>
                                             </span>
                                         </td>
+
                                         <td class="text-end fw-bold">
                                             ₱<?= number_format($s['total'], 2) ?>
                                         </td>

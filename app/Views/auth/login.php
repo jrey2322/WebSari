@@ -173,15 +173,7 @@
             color: #16a34a;
         }
 
-        .demo-box {
-            background: #f0f9ff;
-            border: 1.5px solid #bae6fd;
-            border-radius: 10px;
-            padding: 12px 15px;
-            margin-top: 20px;
-            font-size: .78rem;
-            color: #0369a1;
-        }
+
 
         .auth-footer {
             text-align: center;
@@ -287,18 +279,7 @@
             </button>
         </form>
 
-        <!-- Demo Credentials -->
-        <div class="demo-box">
-            <div style="font-weight:800;margin-bottom:6px;">
-                🔑 Demo Accounts:
-            </div>
-            <div>
-                <strong>Owner</strong> →
-                admin@websari.com /
-                <strong>adminsari</strong>
-            </div>
 
-        </div>
     </div>
 
     <!-- Footer -->

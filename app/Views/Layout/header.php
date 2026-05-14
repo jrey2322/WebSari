@@ -388,6 +388,18 @@
         transform: translateY(-1px);
     }
 
+    .btn-ws-blue {
+        background: var(--primary);
+        color: #fff;
+        border-color: var(--primary);
+    }
+
+    .btn-ws-blue:hover {
+        background: var(--primary-dk);
+        color: #fff;
+        transform: translateY(-1px);
+    }
+
     /* ── BADGES ─────────────────────────────── */
     .badge {
         font-size: .7rem;

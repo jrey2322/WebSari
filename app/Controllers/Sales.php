@@ -19,6 +19,7 @@ class Sales extends BaseController
         $this->productModel  = new ProductModel();
     }
 
+
     public function index()
     {
         $redirect = $this->checkSession();
@@ -164,6 +165,7 @@ class Sales extends BaseController
 
             return redirect()->to(base_url('sales/view/' . $saleId))
                              ->with('success', 'Sale completed! 🎉');
+
 
         } catch (\Exception $e) {
             $db->transRollback();
